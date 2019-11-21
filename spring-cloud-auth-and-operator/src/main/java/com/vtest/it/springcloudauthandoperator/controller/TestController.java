@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @RestController
 @CrossOrigin
-//@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+@PreAuthorize("hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
 public class TestController {
     // 测试普通权限
     @Autowired
@@ -70,6 +70,7 @@ public class TestController {
     public String getAllIQCRecord(){
         return probercardInfoService.getAllIQCRecord();
     }
+
     @GetMapping(value = "/AllMaintainRecord")
     public String getAllMaintainRecord(){
         return probercardInfoService.getAllMaintainRecord();
@@ -139,8 +140,10 @@ public class TestController {
     public void addNewIqcRecord(@RequestBody IqcRecordBean bean){
         operatorService.addNewIqcRecord(bean);
     }
+
+    @PreAuthorize("!hasAuthority('ROLE_NORMAL-TOOLING')")
     @PostMapping(value = "/File")
-    public void putFile(@RequestParam(value = "excelFile", required = false) MultipartFile file,String proberCardId){
+    public void putFile(@RequestParam(value = "excelFile", required = false) MultipartFile file, String proberCardId) {
         String descPath = "D:/upload/" +proberCardId;
         File descFile = new File(descPath);
         if (!descFile.exists()) {
@@ -184,6 +187,7 @@ public class TestController {
         operatorService.addProberCardEX(bean);
     }
 
+    @PreAuthorize("!hasAuthority('ROLE_NORMAL-TOOLING') or !hasAuthority('ROLE_PTE-TOOLING')")
     @PostMapping("/ProberCard")
     public void updateProberCard(@RequestBody ProberCardEntityBean bean) {
         operatorService.updateProberCard(bean);
@@ -192,10 +196,14 @@ public class TestController {
     public void updateProberCardReleaseFlag(String proberCardId, boolean releaseFlag)  {
         operatorService.updateProberCardReleaseFlag(proberCardId,releaseFlag);
     }
+
+    @PreAuthorize("!hasAuthority('ROLE_NORMAL-TOOLING') or !hasAuthority('ROLE_PTE-TOOLING')")
     @PostMapping("/ProberCardInfoReleaseFlag")
     public void updateProberCardInfoReleaseFlag(String proberCardId, boolean releaseFlag) {
         operatorService.updateProberCardInfoReleaseFlag(proberCardId,releaseFlag);
     }
+
+    @PreAuthorize("!hasAuthority('ROLE_NORMAL-TOOLING') or !hasAuthority('ROLE_PTE-TOOLING')")
     @PostMapping("/SingleState")
     public void updateSingleState(String proberCardId, String currentProcess){
         operatorService.updateSingleState(proberCardId,currentProcess);
