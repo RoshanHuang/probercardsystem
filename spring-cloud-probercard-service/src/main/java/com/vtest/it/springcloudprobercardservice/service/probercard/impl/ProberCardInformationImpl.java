@@ -40,7 +40,7 @@ public class ProberCardInformationImpl implements ProberCardInformation {
     }
 
     @Override
-    @Cacheable(value = "ProberCardCache",key = "#root.methodName+'&'+#proberCardId")
+    @Cacheable(value = "ProberCardCache", key = "#root.methodName+'&'+#proberCardId", unless = "#result==null")
     public ReleaseProberCardBean getReleaseCardInfo(String proberCardId) {
         return informationDao.getReleaseCardInfo(proberCardId);
     }

@@ -56,7 +56,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
 
     @Override
     @Caching(evict = {
-            @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'")
+            @CacheEvict(value = "ProberCardCache", key = "'getAllProberCardStatus'"),
+            @CacheEvict(value = "ProberCardCache", key = "'getReleaseCardInfo&'+#bean.proberCardId")
     })
     public void addnewReleaseProberCard(ReleaseProberCardBean bean) {
         proberCardOperator.addnewReleaseProberCard(bean);
@@ -178,7 +179,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     }
     @Override
     @Caching(evict = {
-            @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'")
+            @CacheEvict(value = "ProberCardCache", key = "'getAllProberCardStatus'"),
+            @CacheEvict(value = "ProberCardCache", key = "'getReleaseCardInfo&'+#bean.proberCardId")
     })
     public void addCheckProberCard(ReleaseProberCardBean bean) {
          proberCardOperator.addCheckProberCard(bean);
