@@ -18,13 +18,13 @@ public class UserInformationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        ResponseEntity<User> responseEntity = restTemplate.getForEntity("http://localhost:20300/user-service/auth/user/{1}", User.class, username);
+        ResponseEntity<User> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/user-service/auth/user/{1}", User.class, username);
         return new com.vtest.it.springcloudauthandoperator.domain.User(responseEntity.getBody());
     }
 
     public void registerUser(User user) {
         HttpEntity<User> entity = new HttpEntity<>(user);
-        restTemplate.postForObject("http://localhost:20300/user-service/auth/user/", entity, Integer.class);
+        restTemplate.postForObject("http://192.168.10.182:20300/user-service/auth/user/", entity, Integer.class);
     }
 
 }
