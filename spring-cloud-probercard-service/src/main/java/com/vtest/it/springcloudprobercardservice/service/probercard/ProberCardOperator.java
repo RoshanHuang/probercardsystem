@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 public interface ProberCardOperator {
     public void addProberCardInfo(ProberCardEntityBean bean);
 
+    public void addInfoHistory(ProberCardEntityBean bean);
+
     public void addNewIqcRecord(IqcRecordBean bean);
 
     public void addNewBackRecord(BackProberCardBean bean);
@@ -32,7 +34,7 @@ public interface ProberCardOperator {
 
     public boolean updateSingleState(@Param("proberCardId") String proberCardId, @Param("currentProcess") String currentProcess);
 
-    public boolean updateProberCardItem(@Param("proberCardId") String proberCardId, @Param("pinlenSpec") String pinlenSpec, @Param("pindiamSpec") String pindiamSpec, @Param("pinlevelSpec") String pinlevelSpec, @Param("rebuildCount") Integer rebuildCount);
+    public boolean updateProberCardItem(@Param("proberCardId") String proberCardId, @Param("rebuildCount") Integer rebuildCount);
 
     public boolean updateMaintainItem(@Param("proberCardId") String proberCardId, @Param("afterPinlen") double afterPinlen, @Param("afterPindiam") double afterPindiam, @Param("afterPinlevel") double afterPinlevel);
 
@@ -40,6 +42,8 @@ public interface ProberCardOperator {
 
 
     public boolean cleanPM(@Param("cardid") String cardid, @Param("ownerid") String ownerid);
+
+    public void proberStateHistory(@Param("proberCardId") String proberCardId, @Param("lastProcess") String lastProcess, @Param("currentProcess") String currentProcess, @Param("operator") String operator);
 
     public void addCheckProberCard(ReleaseProberCardBean bean);
 }

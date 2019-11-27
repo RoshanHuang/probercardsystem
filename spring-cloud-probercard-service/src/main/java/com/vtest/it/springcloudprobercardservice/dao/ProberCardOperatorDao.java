@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 public interface ProberCardOperatorDao {
     public void addProberCardInfo(ProberCardEntityBean bean);
 
+    public void addInfoHistory(ProberCardEntityBean bean);
+
     public void addNewIqcRecord(IqcRecordBean bean);
 
     public void addNewBackRecord(BackProberCardBean bean);
@@ -26,6 +28,8 @@ public interface ProberCardOperatorDao {
 
     public void proberCardCreateState(@Param("proberCardId") String proberCardId, @Param("lastProcess") String lastProcess, @Param("currentProcess") String currentProcess, @Param("op") String operator);
 
+    public void proberStateHistory(@Param("proberCardId") String proberCardId, @Param("lastProcess") String lastProcess, @Param("currentProcess") String currentProcess, @Param("operator") String operator);
+
     public void updateProberCardState(@Param("proberCardId") String proberCardId, @Param("NewStatus") String newStatus, @Param("odlStatus") String oldStatus, @Param("operator") String operator);
 
     public void updateProberCard(ProberCardEntityBean bean);
@@ -36,7 +40,7 @@ public interface ProberCardOperatorDao {
 
     public boolean updateSingleState(@Param("proberCardId") String proberCardId, @Param("currentProcess") String currentProcess);
 
-    public boolean updateProberCardItem(@Param("proberCardId") String proberCardId, @Param("pinlenSpec") String pinlenSpec, @Param("pindiamSpec") String pindiamSpec, @Param("pinlevelSpec") String pinlevelSpec, @Param("rebuildCount") Integer rebuildCount);
+    public boolean updateProberCardItem(@Param("proberCardId") String proberCardId, @Param("rebuildCount") Integer rebuildCount);
 
     public boolean updateMaintainItem(@Param("proberCardId") String proberCardId, @Param("afterPinlen") double afterPinlen, @Param("afterPindiam") double afterPindiam, @Param("afterPinlevel") double afterPinlevel);
 

@@ -52,6 +52,7 @@ public class TestController {
         return probercardInfoService.getAllProberCardStatus();
     }
 
+    @PreAuthorize("hasAuthority('ROLE_PTE-TOOLING') or hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING')")
     @GetMapping(value = "/ProberCardReleaseFlag")
     public boolean getProberCardReleaseFlag(String proberCardId) {
         return probercardInfoService.getProberCardReleaseFlag(proberCardId);
@@ -257,8 +258,8 @@ public class TestController {
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING')")
     @PostMapping("/ProberCardItem")
-    public void clearProberCardItem(String proberCardId, String pinlenSpec, String pindiamSpec, String pinlevelSpec, Integer rebuildCount) {
-        operatorService.clearProberCardItem(proberCardId, pinlenSpec, pindiamSpec, pinlevelSpec, rebuildCount);
+    public void clearProberCardItem(String proberCardId, Integer rebuildCount) {
+        operatorService.clearProberCardItem(proberCardId, rebuildCount);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING')")

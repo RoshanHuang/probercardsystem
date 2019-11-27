@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.vtest.it.springcloudprobercardservice.dao.ProberCardOperatorDao">
+<mapper namespace="com.vtest.it.springcloudprobercardservice.dao.addNewMaintainRecordProberCardOperatorDao">
     <insert id="addProberCardInfo" parameterType="com.vtest.it.springcloudprobercardservice.domain.ProberCardEntityBean">
       insert into VTProberCard.Probercard_Info(prober_card_id, cust_name, cust_no, receipt_time, vendor_name, vendor_no, belong_dept, use_equipment, dut_count, pin_count, cab_position, card_source, pm_td, card_type, new_old, clean_type, pinlen_spec, pindiam_spec, pinlevel_spec, pindepth_spec, td_total, card_model, release_flag,glass_mask,mylar_mask,note,rebuild_count,creator,confirmer)
+      value (#{proberCardId},#{custName},#{custNo},#{receiptTime},#{vendorName},#{vendorNo},#{belongDept},#{useEquipment},#{dutCount},#{pinCount},#{cabPosition},#{cardSource},#{pmTd},#{cardType},#{newOld},#{cleanType},#{pinlenSpec},#{pindiamSpec},#{pinlevelSpec},#{pindepthSpec},#{tdTotal},#{cardModel},#{releaseFlag},#{glassMask},#{mylarMask},#{note},#{rebuildCount},#{creator},#{confirmer});
+    </insert>
+    <insert id="addInfoHistory" parameterType="com.vtest.it.springcloudprobercardservice.domain.ProberCardEntityBean">
+      insert into VTProberCard.Probercard_Info_Hist(prober_card_id, cust_name, cust_no, receipt_time, vendor_name, vendor_no, belong_dept, use_equipment, dut_count, pin_count, cab_position, card_source, pm_td, card_type, new_old, clean_type, pinlen_spec, pindiam_spec, pinlevel_spec, pindepth_spec, td_total, card_model, release_flag,glass_mask,mylar_mask,note,rebuild_count,creator,confirmer)
       value (#{proberCardId},#{custName},#{custNo},#{receiptTime},#{vendorName},#{vendorNo},#{belongDept},#{useEquipment},#{dutCount},#{pinCount},#{cabPosition},#{cardSource},#{pmTd},#{cardType},#{newOld},#{cleanType},#{pinlenSpec},#{pindiamSpec},#{pinlevelSpec},#{pindepthSpec},#{tdTotal},#{cardModel},#{releaseFlag},#{glassMask},#{mylarMask},#{note},#{rebuildCount},#{creator},#{confirmer});
     </insert>
     <delete id="deleteProberCardInfo" parameterType="string">
@@ -10,6 +14,9 @@
     </delete>
     <insert id="proberCardCreateState">
         insert into VTProberCard.ProberCard_Current_State(prober_card_id,last_process,current_process,update_operator) value (#{proberCardId},#{lastProcess},#{currentProcess},#{op});
+    </insert>
+    <insert id="proberStateHistory">
+        insert into VTProberCard.ProberCard_Current_State_log(prober_card_id,last_process,current_process,update_operator) value (#{proberCardId},#{lastProcess},#{currentProcess},#{operator});
     </insert>
     <insert id="addNewIqcRecord" parameterType="com.vtest.it.springcloudprobercardservice.domain.IqcRecordBean">
         insert into ProberCard_IQC_Record(prober_card_id, pin_maxlen, pin_minlen, pin_maxdiam, pin_mindiam, pin_level,pin_depth,update_operator,last_process,next_station,note) value
@@ -74,7 +81,7 @@
         update VTProberCard.ProberCard_Current_State set  current_process=#{ currentProcess }  where  prober_card_id=#{proberCardId};
     </update>
     <update id="updateProberCardItem">
-        update VTProberCard.Probercard_Info set  pinlen_spec=#{ pinlenSpec },pindiam_spec=#{pindiamSpec},pinlevel_spec=#{pinlevelSpec},rebuild_count=#{rebuildCount}  where  prober_card_id=#{proberCardId};
+        update VTProberCard.Probercard_Info set rebuild_count=#{rebuildCount}  where  prober_card_id=#{proberCardId};
     </update>
     <update id="updateMaintainItem">
         update VTProberCard.ProberCard_Maintain_Record set  after_pinlen=#{ afterPinlen },after_pindiam=#{afterPindiam},after_pinlevel=#{afterPinlevel}  where  prober_card_id=#{proberCardId};

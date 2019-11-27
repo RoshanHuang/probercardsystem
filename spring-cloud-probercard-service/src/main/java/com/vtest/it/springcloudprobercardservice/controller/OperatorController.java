@@ -1,14 +1,9 @@
 package com.vtest.it.springcloudprobercardservice.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.vtest.it.springcloudprobercardservice.domain.*;
-import com.vtest.it.springcloudprobercardservice.service.probercard.ProberCardInformation;
 import com.vtest.it.springcloudprobercardservice.service.probercard.ProberCardOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 @RestController
 @RequestMapping("/operator")
@@ -18,30 +13,22 @@ public class OperatorController {
     @Autowired
     private ProberCardOperator proberCardOperator;
 
-    @Autowired
-    private ProberCardInformation proberCardInformation;
 
     @PostMapping("/ProberCardInfo")
     public void addProberCardInfo(@RequestBody ProberCardEntityBean bean){
             proberCardOperator.addProberCardInfo(bean);
-
     }
     @PostMapping("/NewIqcRecord")
     public void addNewIqcRecord(@RequestBody IqcRecordBean bean) {
-            proberCardOperator.updateProberCardState(bean.getProberCardId(), bean.getNextStation(),bean.getLastProcess(),bean.getUpdateOperator());
             proberCardOperator.addNewIqcRecord(bean);
     }
     @PostMapping("/backProberCard")
     public void backProberCard(@RequestBody BackProberCardBean bean) {
             proberCardOperator.addNewBackRecord(bean);
-            String oldStatus=proberCardInformation.getProberCardStatus(bean.getProberCardId());
-            proberCardOperator.updateProberCardState(bean.getProberCardId(), bean.getNextStation(),oldStatus, bean.getCreateOperator());
     }
     @PostMapping("/outProberCard")
     public void outProberCard(@RequestBody OutProberCardBean bean){
         proberCardOperator.outProberCard(bean);
-        String oldStatus=proberCardInformation.getProberCardStatus(bean.getProberCardId());
-        proberCardOperator.updateProberCardState(bean.getProberCardId(), bean.getNextStation(), oldStatus, bean.getOutOperator());
     }
     @PostMapping("/ReleaseProberCard")
     public void ReleaseProberCard(@RequestBody ReleaseProberCardBean bean) {
@@ -51,13 +38,10 @@ public class OperatorController {
     @PostMapping("/ProberCardMaintain")
     public void ProberCardMaintain(@RequestBody ProberCardMaintainBean bean) {
             proberCardOperator.addNewMaintainRecord(bean);
-            String oldStatus=proberCardInformation.getProberCardStatus(bean.getProberCardId());
-            proberCardOperator.updateProberCardState(bean.getProberCardId(),bean.getNextStation(), oldStatus, bean.getUpdateOperator());
     }
     @PostMapping("/ProberCardEX")
     public void addProberCardEX(@RequestBody ProberCardExtensionBean bean) {
             proberCardOperator.addProberCardEX(bean);
-            proberCardOperator.updateProberCardState(bean.getProberCardId(), bean.getCurrentProcess(), bean.getLastProcess(), bean.getCreator());
     }
     @PostMapping("/ProbercardCheck")
     public void checkProberCard(@RequestBody ReleaseProberCardBean bean) {
@@ -85,12 +69,13 @@ public class OperatorController {
             proberCardOperator.updateSingleState(proberCardId, currentProcess);
     }
     @PostMapping("/ProberCardItem")
-    public void updateProberCardItem(String proberCardId, String pinlenSpec, String pindiamSpec, String pinlevelSpec, Integer rebuildCount) {
-            pinlenSpec = String.valueOf(0);
-            pindiamSpec = String.valueOf(0);
-            pinlevelSpec = String.valueOf(0);
-            rebuildCount++;
-            proberCardOperator.updateProberCardItem(proberCardId, pinlenSpec, pindiamSpec, pinlevelSpec, rebuildCount);
+    public void updateProberCardItem(String proberCardId, Integer rebuildCount) {
+            if(rebuildCount==null){
+                rebuildCount=1;
+            }else {
+                rebuildCount++;
+            }
+            proberCardOperator.updateProberCardItem(proberCardId, rebuildCount);
     }
     @PostMapping("/MaintainItem")
     public void updateMaintainItem(String proberCardId, double afterPinlen, double afterPindiam, double afterPinlevel) {
