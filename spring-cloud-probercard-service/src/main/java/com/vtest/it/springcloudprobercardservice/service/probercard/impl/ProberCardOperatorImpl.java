@@ -42,7 +42,7 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     public void addNewIqcRecord(IqcRecordBean bean) {
            proberCardOperator.addNewIqcRecord(bean);
            proberCardOperator.updateProberCardState(bean.getProberCardId(), bean.getNextStation(),bean.getLastProcess(),bean.getUpdateOperator());
-           proberCardOperator.proberStateHistory(bean.getProberCardId(), bean.getNextStation(),bean.getLastProcess(),bean.getUpdateOperator());
+           proberCardOperator.proberStateHistory(bean.getProberCardId(),bean.getLastProcess(),bean.getNextStation(),bean.getUpdateOperator());
     }
 
     @Override
@@ -54,7 +54,7 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     public void addNewBackRecord(BackProberCardBean bean) {
          proberCardOperator.addNewBackRecord(bean);
          proberCardOperator.updateProberCardState(bean.getProberCardId(), bean.getNextStation(),proberCardInformation.getProberCardStatus(bean.getProberCardId()), bean.getCreateOperator());
-         proberCardOperator.proberStateHistory(bean.getProberCardId(), bean.getNextStation(),proberCardInformation.getProberCardStatus(bean.getProberCardId()),bean.getCreateOperator());
+         proberCardOperator.proberStateHistory(bean.getProberCardId(),proberCardInformation.getProberCardStatus(bean.getProberCardId()),bean.getNextStation(),bean.getCreateOperator());
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     public void outProberCard(OutProberCardBean bean) {
         proberCardOperator.outProberCard(bean);
         proberCardOperator.updateProberCardState(bean.getProberCardId(), bean.getNextStation(),proberCardInformation.getProberCardStatus(bean.getProberCardId()), bean.getOutOperator());
-        proberCardOperator.proberStateHistory(bean.getProberCardId(), bean.getNextStation(),proberCardInformation.getProberCardStatus(bean.getProberCardId()),bean.getOutOperator());
+        proberCardOperator.proberStateHistory(bean.getProberCardId(),proberCardInformation.getProberCardStatus(bean.getProberCardId()), bean.getNextStation(),bean.getOutOperator());
     }
 
     @Override
@@ -89,7 +89,7 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     public void addNewMaintainRecord(ProberCardMaintainBean bean) {
         proberCardOperator.addNewMaintainRecord(bean);
         proberCardOperator.updateProberCardState(bean.getProberCardId(),bean.getNextStation(), proberCardInformation.getProberCardStatus(bean.getProberCardId()), bean.getUpdateOperator());
-        proberCardOperator.proberStateHistory(bean.getProberCardId(),bean.getNextStation(), proberCardInformation.getProberCardStatus(bean.getProberCardId()), bean.getUpdateOperator());
+        proberCardOperator.proberStateHistory(bean.getProberCardId(),proberCardInformation.getProberCardStatus(bean.getProberCardId()),bean.getNextStation(), bean.getUpdateOperator());
     }
 
     @Override
@@ -133,7 +133,7 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void updateProberCardState(String proberCardId, String newStatus, String oldStatus, String operator) {
         proberCardOperator.updateProberCardState(proberCardId,newStatus,oldStatus,operator);
-        proberCardOperator.proberStateHistory(proberCardId,newStatus,oldStatus,operator);
+        proberCardOperator.proberStateHistory(proberCardId,oldStatus,newStatus,operator);
     }
 
     @Override
