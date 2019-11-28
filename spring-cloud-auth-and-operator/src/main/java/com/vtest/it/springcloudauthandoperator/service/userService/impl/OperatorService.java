@@ -110,4 +110,10 @@ public class OperatorService {
         HttpEntity<String> entity = new HttpEntity<>(cardId);
         restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/ProberCards",entity,String.class);
     }
+    public void cleanTD(String cardid,String ownerid) {
+        MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("cardid",cardid);
+        requestEntity.add("ownerid",ownerid);
+        restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/ReTD",requestEntity,String.class);
+    }
 }

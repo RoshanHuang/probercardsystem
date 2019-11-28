@@ -29,12 +29,6 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     public void addProberCardInfo(ProberCardEntityBean bean) {
             proberCardOperator.addProberCardInfo(bean);
             proberCardOperator.proberCardCreateState(bean.getProberCardId(), "New_Prod", "IQC", bean.getCreator());
-            proberCardOperator.addInfoHistory(bean);
-    }
-    @Override
-    @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
-    public void addInfoHistory(ProberCardEntityBean bean){
-        proberCardOperator.addInfoHistory(bean);
     }
     @Override
     @Caching(evict = {
@@ -225,5 +219,11 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void addCheckProberCard(ReleaseProberCardBean bean) {
          proberCardOperator.addCheckProberCard(bean);
+    }
+    @Override
+    @CacheEvict(value = "ProberCardCache",key = "'getTd'")
+    @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
+    public boolean cleanTD(String cardid,String ownerid){
+      return proberCardOperator.cleanTD(cardid,ownerid);
     }
 }

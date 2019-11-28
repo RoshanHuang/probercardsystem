@@ -6,8 +6,6 @@ import org.apache.ibatis.annotations.Param;
 public interface ProberCardOperator {
     public void addProberCardInfo(ProberCardEntityBean bean);
 
-    public void addInfoHistory(ProberCardEntityBean bean);
-
     public void addNewIqcRecord(IqcRecordBean bean);
 
     public void addNewBackRecord(BackProberCardBean bean);
@@ -46,4 +44,6 @@ public interface ProberCardOperator {
     public void proberStateHistory(@Param("proberCardId") String proberCardId, @Param("lastProcess") String lastProcess, @Param("currentProcess") String currentProcess, @Param("operator") String operator);
 
     public void addCheckProberCard(ReleaseProberCardBean bean);
+
+    public boolean cleanTD(@Param("cardid") String cardid, @Param("ownerid") String ownerid);
 }

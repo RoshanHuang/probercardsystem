@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface ProberCardOperatorDao {
     public void addProberCardInfo(ProberCardEntityBean bean);
 
-    public void addInfoHistory(ProberCardEntityBean bean);
-
     public void addNewIqcRecord(IqcRecordBean bean);
 
     public void addNewBackRecord(BackProberCardBean bean);
@@ -49,4 +47,6 @@ public interface ProberCardOperatorDao {
     public boolean cleanPM(@Param("cardid") String cardid, @Param("ownerid") String ownerid);
 
     public void addCheckProberCard(ReleaseProberCardBean bean);
+
+    public boolean cleanTD(@Param("cardid") String cardid, @Param("ownerid") String ownerid);
 }

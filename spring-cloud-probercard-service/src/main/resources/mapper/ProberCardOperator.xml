@@ -5,10 +5,6 @@
       insert into VTProberCard.Probercard_Info(prober_card_id, cust_name, cust_no, receipt_time, vendor_name, vendor_no, belong_dept, use_equipment, dut_count, pin_count, cab_position, card_source, pm_td, card_type, new_old, clean_type, pinlen_spec, pindiam_spec, pinlevel_spec, pindepth_spec, td_total, card_model, release_flag,glass_mask,mylar_mask,note,rebuild_count,creator,confirmer)
       value (#{proberCardId},#{custName},#{custNo},#{receiptTime},#{vendorName},#{vendorNo},#{belongDept},#{useEquipment},#{dutCount},#{pinCount},#{cabPosition},#{cardSource},#{pmTd},#{cardType},#{newOld},#{cleanType},#{pinlenSpec},#{pindiamSpec},#{pinlevelSpec},#{pindepthSpec},#{tdTotal},#{cardModel},#{releaseFlag},#{glassMask},#{mylarMask},#{note},#{rebuildCount},#{creator},#{confirmer});
     </insert>
-    <insert id="addInfoHistory" parameterType="com.vtest.it.springcloudprobercardservice.domain.ProberCardEntityBean">
-      insert into VTProberCard.Probercard_Info_Hist(prober_card_id, cust_name, cust_no, receipt_time, vendor_name, vendor_no, belong_dept, use_equipment, dut_count, pin_count, cab_position, card_source, pm_td, card_type, new_old, clean_type, pinlen_spec, pindiam_spec, pinlevel_spec, pindepth_spec, td_total, card_model, release_flag,glass_mask,mylar_mask,note,rebuild_count,creator,confirmer)
-      value (#{proberCardId},#{custName},#{custNo},#{receiptTime},#{vendorName},#{vendorNo},#{belongDept},#{useEquipment},#{dutCount},#{pinCount},#{cabPosition},#{cardSource},#{pmTd},#{cardType},#{newOld},#{cleanType},#{pinlenSpec},#{pindiamSpec},#{pinlevelSpec},#{pindepthSpec},#{tdTotal},#{cardModel},#{releaseFlag},#{glassMask},#{mylarMask},#{note},#{rebuildCount},#{creator},#{confirmer});
-    </insert>
     <delete id="deleteProberCardInfo" parameterType="string">
         delete from VTProberCard.Probercard_Info where prober_card_id=#{cardId};
     </delete>
@@ -95,5 +91,8 @@
     </insert>
     <update id="cleanPM" statementType="CALLABLE">
         {call pro_pmfunction(#{cardid,mode=IN,jdbcType=VARCHAR},#{ownerid,mode=IN,jdbcType=VARCHAR})}
+    </update>
+    <update id="cleanTD" statementType="CALLABLE">
+        {call pro_rebfunction(#{cardid,mode=IN,jdbcType=VARCHAR},#{ownerid,mode=IN,jdbcType=VARCHAR})}
     </update>
 </mapper>

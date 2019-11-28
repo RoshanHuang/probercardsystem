@@ -95,6 +95,10 @@ public class OperatorController {
     public boolean cleanPM(String cardid,String ownerid) {
         return proberCardOperator.cleanPM(cardid,ownerid);
     }
+    @PostMapping("/ReTD")
+    public boolean cleanTD(String cardid,String ownerid) {
+        return proberCardOperator.cleanTD(cardid,ownerid);
+    }
     @DeleteMapping("/ProberCards")
     public void deleteProberCards(@RequestParam("cardId") String cardId) {
         proberCardOperator.deleteProberCardInfo(cardId);

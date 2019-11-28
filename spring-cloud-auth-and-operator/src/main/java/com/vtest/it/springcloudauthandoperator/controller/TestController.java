@@ -279,7 +279,11 @@ public class TestController {
     public void cleanPM(String cardid, String ownerid) {
         operatorService.cleanPM(cardid, ownerid);
     }
-
+    @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING')")
+    @PostMapping("/ReTD")
+    public void cleanTD(String cardid, String ownerid) {
+        operatorService.cleanTD(cardid, ownerid);
+    }
     @DeleteMapping("/ProberCards")
     public void ProberCards(String cardId) {
         operatorService.deleteProberCards(cardId);
