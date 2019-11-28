@@ -35,7 +35,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecord'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMinTime'"),
-            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMaxTime'")
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMaxTime'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getProberCardStatus&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void addNewIqcRecord(IqcRecordBean bean) {
@@ -46,7 +47,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
 
     @Override
     @Caching(evict = {
-            @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'")
+            @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getProberCardStatus&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void addNewBackRecord(BackProberCardBean bean) {
@@ -57,7 +59,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
 
     @Override
     @Caching(evict = {
-            @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'")
+            @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getProberCardStatus&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void outProberCard(OutProberCardBean bean) {
@@ -79,7 +82,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     @Override
     @Caching(evict = {
             @CacheEvict(value = "ProberCardCache",key = "'getAllMaintainRecord'"),
-            @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'")
+            @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getProberCardStatus&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void addNewMaintainRecord(ProberCardMaintainBean bean) {
