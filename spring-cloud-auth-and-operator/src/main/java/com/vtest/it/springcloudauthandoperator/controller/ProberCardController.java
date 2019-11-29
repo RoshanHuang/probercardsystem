@@ -169,7 +169,7 @@ public class ProberCardController {
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING')")
     @PostMapping(value = "/File")
     public void putFile(@RequestParam(value = "excelFile", required = false) MultipartFile file, String proberCardId) {
-        String descPath = "D:/upload/" + proberCardId;
+        String descPath = "/upload/" + proberCardId;
         File descFile = new File(descPath);
         if (!descFile.exists()) {
             descFile.mkdir();
