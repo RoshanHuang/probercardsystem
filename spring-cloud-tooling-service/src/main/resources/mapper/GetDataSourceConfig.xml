@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vtest.it.springcloudtoolingservice.dao.config.GetDataSourceConfigDao">
+    <select id="getList" resultType="com.vtest.it.springcloudtoolingservice.domain.DataInforToMesBean">
+        SELECT custom_code,device FROM VTPTMT.mes_data_from;
+    </select>
+    <select id="getTesterStatus" resultType="com.vtest.it.springcloudtoolingservice.domain.BinWaferInforBean">
+       SELECT custom_code as customer_code,device, lot_id, cp_step, wafer_no, oprator, tester_program, tester_id, prober_id, Prober_card_id, pid_name, pid_version, start_time, gross_die, pass_die, fail_die, yield, end_time, check_status, check_result,map_cols, map_rows, min_x, min_y, others_params FROM VTPTMT.bin_wafer_summary;
+    </select>
+    <select id="getTesterStatusSingle" resultType="com.vtest.it.springcloudtoolingservice.domain.BinWaferInforBean">
+        SELECT custom_code as customer_code,device, lot_id, cp_step, wafer_no, oprator, tester_program, tester_id, prober_id, Prober_card_id, pid_name, pid_version, start_time, gross_die, pass_die, fail_die, yield, end_time, check_status, check_result,map_cols, map_rows, min_x, min_y, others_params FROM VTPTMT.bin_wafer_summary WHERE tester_id=#{tester};
+    </select>
+    <select id="getTesterStatusList" resultType="com.vtest.it.springcloudtoolingservice.domain.WaferInforTesterListBean">
+        SELECT his.custom_code as customer_code,his.device,his.lot_id,his.cp_step,his.wafer_no,
+his.oprator,his.tester_program,his.tester_id,his.prober_id,his.Prober_card_id,
+his.pid_name,his.pid_version,min(his.start_time) start_time,max(his.gross_die) gross_die,max(his.pass_die) pass_die ,max(his.fail_die)fail_die ,
+max(his.yield) yield,max(his.end_time) end_time,max(his.check_result) check_result,max(his.load_time) load_time FROM VTPTMT.bin_wafer_summary_hist his
+where load_time>CURDATE()-2 and his.tester_id=#{tester}
+group by his.custom_code,his.device,his.lot_id,his.cp_step,his.wafer_no,
+his.oprator,his.tester_program,his.tester_id,his.prober_id,his.Prober_card_id,
+his.pid_name,his.pid_version order by his.device,his.lot_id,his.cp_step,his.wafer_no ;
+    </select>
+</mapper>

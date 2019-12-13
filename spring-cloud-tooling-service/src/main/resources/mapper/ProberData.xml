@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vtest.it.springcloudtoolingservice.dao.prober.ProberDataDao">
+    <resultMap id="waferYieldMap" type="com.vtest.it.springcloudtoolingservice.domain.waferYieldBean">
+        <result property="customCode" column="custom_code"/>
+        <result property="device" column="device"/>
+        <result property="lotId" column="lot_id"/>
+        <result property="cpStep" column="cp_step"/>
+        <result property="waferNo" column="wafer_no"/>
+        <result property="siteId" column="site_id"/>
+        <result property="softBinNo" column="soft_bin_no"/>
+        <result property="binCount" column="bin_count"/>
+        <result property="passFail" column="pass_fail"/>
+    </resultMap>
+    <resultMap id="idMap" type="com.vtest.it.springcloudtoolingservice.domain.waferIdInforBean">
+        <result column="wafer_no" property="waferId"/>
+        <result column="others_params" property="params"/>
+    </resultMap>
+    <resultMap id="deviceAndCustomer" type="com.vtest.it.springcloudtoolingservice.domain.CustomerAndDevicesBean">
+        <result column="device" property="device"/>
+        <result column="custom_code" property="customerCode"/>
+    </resultMap>
+    <resultMap id="lotAndCp" type="com.vtest.it.springcloudtoolingservice.domain.LotAndCpsBean">
+        <result column="lot_id" property="lot"/>
+        <result column="cp_step" property="cp"/>
+    </resultMap>
+    <select id="getWaferBinSummary" resultMap="waferYieldMap">
+        SELECT custom_code,device,lot_id,cp_step,wafer_no,site_id,soft_bin_no,bin_count,pass_fail FROM vtdaprober.bin_info_summary
+        WHERE custom_code=#{customerCode} AND device=#{device} AND lot_id=#{lot} AND cp_step=#{cp} AND test_type='F'
+        <if test="waferId!=null">
+            AND wafer_no=#{waferId}
+        </if>
+        ;
+    </select>
+    <select id="getwaferInfor" resultType="com.vtest.it.springcloudtoolingservice.domain.LotSummaryWaferBean">
+      SELECT wafer_no,gross_die,pass_die,fail_die,yield FROM vtdaprober.bin_wafer_summary WHERE custom_code=#{custom}
+       AND device =#{device} AND lot_id=#{lot} AND cp_step=#{cp};
+    </select>
+    <select id="getCustomerAndDevices" resultMap="deviceAndCustomer">
+        select distinct device ,custom_code from  vtdaprober.bin_wafer_summary where custom_code in (SELECT distinct custom_code FROM vtdaprober.bin_wafer_summary);
+    </select>
+    <select id="getLotAndCp"  resultMap="lotAndCp">
+        select distinct lot_id,cp_step from vtdaprober.bin_wafer_summary where  device=#{device} and custom_code=#{custom};
+    </select>
+    <select id="getWaferIds" resultType="com.vtest.it.springcloudtoolingservice.domain.WaferIdBean">
+      SELECT wafer_no FROM vtdaprober.bin_wafer_summary where custom_code=#{custom} and device=#{device} and lot_id=#{lot} and cp_step=#{cp};
+    </select>
+    <select id="getQureyInfors" resultType="com.vtest.it.springcloudtoolingservice.domain.GetWaferInforBean">
+        SELECT custom_code,device,lot_id,cp_step,wafer_no,oprator,tester_program,tester_id,prober_id,Prober_card_id,pid_name,pid_version,start_time,gross_die,pass_die,fail_die,yield,end_time,map_cols,map_rows,min_x,min_y FROM vtdaprober.bin_wafer_summary WHERE custom_code=#{custom}
+        <if test="device!=null">
+            AND device=#{device}
+        </if>
+        <if test="lot!=null">
+            AND lot_id=#{lot}
+        </if>
+        <if test="cp!=null">
+            AND cp_step=#{cp}
+        </if>
+        <if test="waferId!=null">
+            AND wafer_no=#{waferId}
+        </if>
+        ;
+    </select>
+    <select id="getOthersParam" resultMap="idMap">
+        SELECT wafer_no,others_params FROM vtdaprober.bin_wafer_summary WHERE custom_code=#{customerCode}
+        <if test="device!=null">
+            AND device=#{device}
+        </if>
+        <if test="lot!=null">
+            AND lot_id=#{lot}
+        </if>
+        <if test="cp!=null">
+            AND cp_step=#{cp}
+        </if>
+        <if test="waferId!=null">
+            AND wafer_no=#{waferId}
+        </if>
+        ;
+    </select>
+</mapper>

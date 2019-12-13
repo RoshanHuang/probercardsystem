@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vtest.it.springcloudtoolingservice.dao.testerLocation.TesterLocationDao">
+    <select id="getTesterLocation" resultType="com.vtest.it.springcloudtoolingservice.domain.testerLocationBean">
+        {call WebMES.dbo.pro_gettesterlocation() }
+    </select>
+    <select id="getPassBin" resultType="String">
+          {call WebMES.dbo.pro_GetBininfo(#{waferId,mode=IN,jdbcType=VARCHAR})}
+    </select>
+    <select id="sendWaferMail" resultType="String">
+          {call WebMES.dbo.P_Send_Mail(#{productId,mode=IN,jdbcType=VARCHAR},#{lotId,mode=IN,jdbcType=VARCHAR},#{waferNo,mode=IN,jdbcType=VARCHAR},#{testerId,mode=IN,jdbcType=VARCHAR})}
+    </select>
+</mapper>
