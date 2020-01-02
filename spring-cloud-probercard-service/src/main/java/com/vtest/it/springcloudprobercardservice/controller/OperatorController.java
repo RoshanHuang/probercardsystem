@@ -22,6 +22,10 @@ public class OperatorController {
     public void addNewIqcRecord(@RequestBody IqcRecordBean bean) {
             proberCardOperator.addNewIqcRecord(bean);
     }
+    @PostMapping("/RBIqcRecord")
+    public void addRBIqcRecord(@RequestBody IqcRecordBean bean) {
+        proberCardOperator.addRBIqcRecord(bean);
+    }
     @PostMapping("/backProberCard")
     public void backProberCard(@RequestBody BackProberCardBean bean) {
             proberCardOperator.addNewBackRecord(bean);

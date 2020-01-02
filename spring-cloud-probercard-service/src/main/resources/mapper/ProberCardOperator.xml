@@ -18,6 +18,10 @@
         insert into ProberCard_IQC_Record(prober_card_id, pin_maxlen, pin_minlen, pin_maxdiam, pin_mindiam, pin_level,pin_depth,update_operator,last_process,next_station,note) value
         (#{proberCardId},#{pinMaxlen},#{pinMinlen},#{pinMaxdiam},#{pinMindiam},#{pinLevel},#{pinDepth},#{updateOperator},#{lastProcess},#{nextStation},#{note});
     </insert>
+    <insert id="addRBIqcRecord" parameterType="com.vtest.it.springcloudprobercardservice.domain.IqcRecordBean">
+        insert into VTProberCard.ProberCard_IQC_Record_RB(prober_card_id, pin_maxlen, pin_minlen, pin_maxdiam, pin_mindiam, pin_level,pin_depth,update_operator,last_process,next_station,note) value
+        (#{proberCardId},#{pinMaxlen},#{pinMinlen},#{pinMaxdiam},#{pinMindiam},#{pinLevel},#{pinDepth},#{updateOperator},#{lastProcess},#{nextStation},#{note});
+    </insert>
     <update id="updateProberCardState">
         update VTProberCard.ProberCard_Current_State set last_process =#{odlStatus} ,current_process=#{NewStatus},update_operator=#{operator} where prober_card_id=#{proberCardId} and current_process=#{odlStatus};
     </update>

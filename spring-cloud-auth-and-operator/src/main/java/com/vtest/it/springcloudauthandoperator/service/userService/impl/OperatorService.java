@@ -24,6 +24,10 @@ public class OperatorService {
         HttpEntity<IqcRecordBean> entity = new HttpEntity<>(bean);
         restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/NewIqcRecord",entity,Object.class);
     }
+    public void addRBIqcRecord(IqcRecordBean bean){
+        HttpEntity<IqcRecordBean> entity = new HttpEntity<>(bean);
+        restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/RBIqcRecord",entity,Object.class);
+    }
     public void outProberCard(OutProberCardBean bean){
         HttpEntity<OutProberCardBean> entity = new HttpEntity<>(bean);
         restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/outProberCard",entity,Object.class);

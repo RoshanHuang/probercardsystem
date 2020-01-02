@@ -103,4 +103,8 @@ public class ProbercardInfoService {
         ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/AllIQCRecordByMaxTime", String.class);
         return responseEntity.getBody();
     }
+    public String getAllIQCRecordByRebuild(){
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/AllIQCRecordByRebuild", String.class);
+        return responseEntity.getBody();
+    }
 }

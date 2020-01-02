@@ -104,4 +104,12 @@ public class InformationController {
     public ArrayList<IqcRecordBean> getAllIQCRecordByMaxTime() {
         return proberCardInformation.getAllIQCRecordByMaxTime();
     }
+    @GetMapping(value = "/AllIQCRecordByRebuild",produces = {"application/json;charset=UTF-8"})
+    public ArrayList<IqcRecordBean> getAllIQCRecordByRebuild() {
+        return proberCardInformation.getAllIQCRecordByRebuild();
+    }
+    @GetMapping("/ExistFlag/{proberCardId}")
+    public Integer getExistFlag(@PathVariable("proberCardId") String proberCardId){
+        return  proberCardInformation.getExistFlag(proberCardId);
+    }
 }

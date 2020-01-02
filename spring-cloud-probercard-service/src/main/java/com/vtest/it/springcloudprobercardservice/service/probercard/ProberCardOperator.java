@@ -8,6 +8,8 @@ public interface ProberCardOperator {
 
     public void addNewIqcRecord(IqcRecordBean bean);
 
+    public void addRBIqcRecord(IqcRecordBean  bean);
+
     public void addNewBackRecord(BackProberCardBean bean);
 
     public void outProberCard(OutProberCardBean bean);

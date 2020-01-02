@@ -153,6 +153,12 @@ public class ProberCardController {
         return probercardInfoService.getAllIQCRecordByMaxTime();
     }
 
+    @PreAuthorize("hasAuthority('ROLE_PTE-TOOLING') or hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_NORMAL-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING') ")
+    @GetMapping(value = "/AllIQCRecordByRebuild")
+    public String getAllIQCRecordByRebuild() {
+        return probercardInfoService.getAllIQCRecordByRebuild();
+    }
+
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
     @PostMapping(value = "/ProberCardInfo")
     public void addProberCardInfo(@RequestBody ProberCardEntityBean bean) {
@@ -163,6 +169,12 @@ public class ProberCardController {
     @PostMapping(value = "/NewIqcRecord")
     public void addNewIqcRecord(@RequestBody IqcRecordBean bean) {
         operatorService.addNewIqcRecord(bean);
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
+    @PostMapping(value = "/RBIqcRecord")
+    public void addRBIqcRecord(@RequestBody IqcRecordBean bean) {
+        operatorService.addRBIqcRecord(bean);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")

@@ -55,4 +55,8 @@ public interface ProberCardInformationDao {
     public ArrayList<IqcRecordBean> getAllIQCRecordByMinTime();
 
     public ArrayList<IqcRecordBean> getAllIQCRecordByMaxTime();
+
+    public ArrayList<IqcRecordBean> getAllIQCRecordByRebuild();
+
+    public Integer getExistFlag(@Param("proberCardId") String proberCardId);
 }

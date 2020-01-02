@@ -151,4 +151,16 @@ public class ProberCardInformationImpl implements ProberCardInformation {
     public ArrayList<IqcRecordBean> getAllIQCRecordByMaxTime() {
         return informationDao.getAllIQCRecordByMaxTime();
     }
+
+    @Override
+    @Cacheable(value = "ProberCardCache",key = "#root.methodName")
+    public ArrayList<IqcRecordBean> getAllIQCRecordByRebuild(){
+        return informationDao.getAllIQCRecordByRebuild();
+    }
+
+    @Override
+    @Cacheable(value = "ProberCardCache",key = "#root.methodName+'&'+#proberCardId")
+    public Integer getExistFlag(String proberCardId){
+        return  informationDao.getExistFlag(proberCardId);
+    }
 }
