@@ -165,7 +165,7 @@ public class ProberCardController {
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
     @GetMapping(value = "/AfterPinByMaxTime")
     public double getAfterPinByMaxTime(String proberCardId) {
-        return probercardInfoService.getPinMinByMaxTime(proberCardId);
+        return probercardInfoService.getAfterPinByMaxTime(proberCardId);
     }
     @PreAuthorize("hasAuthority('ROLE_PTE-TOOLING') or hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_NORMAL-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING') ")
     @GetMapping(value = "/AllIQCRecordByRebuild")
