@@ -169,11 +169,13 @@ public class ProberCardInformationImpl implements ProberCardInformation {
         return  informationDao.getSpec(proberCardId);
     }
     @Override
+    @Transactional(transactionManager = "transactionManager", propagation = Propagation.REQUIRED, isolation = Isolation.READ_UNCOMMITTED)
     @Cacheable(value = "ProberCardCache",key = "#root.methodName+'&'+#proberCardId")
     public double getPinMinByMaxTime(String proberCardId){
         return  informationDao.getPinMinByMaxTime(proberCardId);
     }
     @Override
+    @Transactional(transactionManager = "transactionManager", propagation = Propagation.REQUIRED, isolation = Isolation.READ_UNCOMMITTED)
     @Cacheable(value = "ProberCardCache",key = "#root.methodName+'&'+#proberCardId")
     public double getAfterPinByMaxTime(String proberCardId){
         return  informationDao.getAfterPinByMaxTime(proberCardId);
