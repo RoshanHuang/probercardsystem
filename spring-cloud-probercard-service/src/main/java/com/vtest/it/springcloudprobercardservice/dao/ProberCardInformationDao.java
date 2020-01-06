@@ -59,4 +59,10 @@ public interface ProberCardInformationDao {
     public ArrayList<IqcRecordBean> getAllIQCRecordByRebuild();
 
     public Integer getExistFlag(@Param("proberCardId") String proberCardId);
+
+    public ArrayList<ProberCardEntityBean> getSpec(@Param("proberCardId") String proberCardId);
+
+    public double getPinMinByMaxTime(@Param("proberCardId") String proberCardId);
+
+    public double getAfterPinByMaxTime(@Param("proberCardId") String proberCardId);
 }

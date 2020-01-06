@@ -99,4 +99,7 @@
     <update id="cleanTD" statementType="CALLABLE">
         {call pro_rebfunction(#{cardid,mode=IN,jdbcType=VARCHAR},#{ownerid,mode=IN,jdbcType=VARCHAR})}
     </update>
+    <update id="updateRBIqcRecord">
+        update VTProberCard.ProberCard_IQC_Record_RB set pin_maxlen=#{pinMaxlen},pin_minlen=#{pinMinlen}, pin_maxdiam=#{pinMaxdiam},pin_mindiam=#{pinMindiam},pinLevel=#{pinLevel},pinDepth=#{pinDepth},updateOperator=#{updateOperator},lastProcess=#{lastProcess},nextStation=#{nextStation},note=#{note} where prober_card_id=#{proberCardId}
+    </update>
 </mapper>

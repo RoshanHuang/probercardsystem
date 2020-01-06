@@ -54,4 +54,11 @@ public interface ProberCardInformation {
     public ArrayList<IqcRecordBean> getAllIQCRecordByRebuild();
 
     public Integer getExistFlag(String proberCardId);
+
+    public ArrayList<ProberCardEntityBean> getSpec(String proberCardId);
+
+    public double getPinMinByMaxTime(String proberCardId);
+
+    public double getAfterPinByMaxTime(String proberCardId);
+
 }

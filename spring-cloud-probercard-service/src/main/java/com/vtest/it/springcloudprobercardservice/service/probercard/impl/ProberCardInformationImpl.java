@@ -163,4 +163,19 @@ public class ProberCardInformationImpl implements ProberCardInformation {
     public Integer getExistFlag(String proberCardId){
         return  informationDao.getExistFlag(proberCardId);
     }
+    @Override
+    @Cacheable(value = "ProberCardCache",key = "#root.methodName+'&'+#proberCardId")
+    public ArrayList<ProberCardEntityBean> getSpec(String proberCardId){
+        return  informationDao.getSpec(proberCardId);
+    }
+    @Override
+    @Cacheable(value = "ProberCardCache",key = "#root.methodName+'&'+#proberCardId")
+    public double getPinMinByMaxTime(String proberCardId){
+        return  informationDao.getPinMinByMaxTime(proberCardId);
+    }
+    @Override
+    @Cacheable(value = "ProberCardCache",key = "#root.methodName+'&'+#proberCardId")
+    public double getAfterPinByMaxTime(String proberCardId){
+        return  informationDao.getAfterPinByMaxTime(proberCardId);
+    }
 }

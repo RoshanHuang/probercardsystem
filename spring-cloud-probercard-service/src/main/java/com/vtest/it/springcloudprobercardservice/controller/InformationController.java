@@ -112,4 +112,16 @@ public class InformationController {
     public Integer getExistFlag(@PathVariable("proberCardId") String proberCardId){
         return  proberCardInformation.getExistFlag(proberCardId);
     }
+    @GetMapping("/Spec/{proberCardId}")
+    public ArrayList<ProberCardEntityBean>  getSpec(@PathVariable("proberCardId") String proberCardId){
+        return  proberCardInformation.getSpec(proberCardId);
+    }
+    @GetMapping("/PinMinByMaxTime/{proberCardId}")
+    public double  getPinMinByMaxTime(@PathVariable("proberCardId") String proberCardId){
+        return  proberCardInformation.getPinMinByMaxTime(proberCardId);
+    }
+    @GetMapping("/AfterPinByMaxTime/{proberCardId}")
+    public double getAfterPinByMaxTime(@PathVariable("proberCardId") String proberCardId){
+        return  proberCardInformation.getAfterPinByMaxTime(proberCardId);
+    }
 }

@@ -107,4 +107,16 @@ public class ProbercardInfoService {
         ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/AllIQCRecordByRebuild", String.class);
         return responseEntity.getBody();
     }
+    public String getSpec(String proberCardId){
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/Spec/{proberCardId}", String.class,proberCardId);
+        return responseEntity.getBody();
+    }
+    public double getPinMinByMaxTime(String proberCardId){
+        ResponseEntity<Double> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/PinMinByMaxTime/{proberCardId}", Double.class,proberCardId);
+        return responseEntity.getBody();
+    }
+    public double getAfterPinByMaxTime(String proberCardId){
+        ResponseEntity<Double> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/AfterPinByMaxTime/{proberCardId}", Double.class,proberCardId);
+        return responseEntity.getBody();
+    }
 }

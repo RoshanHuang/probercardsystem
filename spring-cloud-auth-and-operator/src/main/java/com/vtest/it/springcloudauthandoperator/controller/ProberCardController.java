@@ -152,7 +152,21 @@ public class ProberCardController {
     public String getAllIQCRecordByMaxTime() {
         return probercardInfoService.getAllIQCRecordByMaxTime();
     }
-
+    @PreAuthorize("hasAuthority('ROLE_PTE-TOOLING') or hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_NORMAL-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING') ")
+    @GetMapping(value = "/Spec")
+    public String getSpec(String proberCardId) {
+        return probercardInfoService.getSpec(proberCardId);
+    }
+    @PreAuthorize("hasAuthority('ROLE_PTE-TOOLING') or hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_NORMAL-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING') ")
+    @GetMapping(value = "/PinMinByMaxTime")
+    public double getPinMinByMaxTime(String proberCardId) {
+        return probercardInfoService.getPinMinByMaxTime(proberCardId);
+    }
+    @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
+    @GetMapping(value = "/AfterPinByMaxTime")
+    public double getAfterPinByMaxTime(String proberCardId) {
+        return probercardInfoService.getPinMinByMaxTime(proberCardId);
+    }
     @PreAuthorize("hasAuthority('ROLE_PTE-TOOLING') or hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_NORMAL-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING') ")
     @GetMapping(value = "/AllIQCRecordByRebuild")
     public String getAllIQCRecordByRebuild() {
@@ -298,5 +312,10 @@ public class ProberCardController {
     @DeleteMapping("/ProberCards")
     public void ProberCards(String cardId) {
         operatorService.deleteProberCards(cardId);
+    }
+    @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
+    @PostMapping("/RBIqcItem")
+    public void clearRBIQCItem(String proberCardId, double pinMinlen, double pinMaxdiam, double pinLevel) {
+        operatorService.clearRBIQCItem(proberCardId, pinMinlen, pinMaxdiam, pinLevel);
     }
 }

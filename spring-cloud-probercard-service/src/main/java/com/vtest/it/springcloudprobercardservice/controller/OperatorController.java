@@ -106,6 +106,12 @@ public class OperatorController {
     @DeleteMapping("/ProberCards")
     public void deleteProberCards(@RequestParam("cardId") String cardId) {
         proberCardOperator.deleteProberCardInfo(cardId);
-
+    }
+    @PostMapping("RBIqcItem")
+    public void updateRBIqcItem(String proberCardId,double pinMinlen,double pinMaxdiam,double pinLevel){
+        pinMinlen = 0;
+        pinMaxdiam = 0;
+        pinLevel = 0;
+        proberCardOperator.updateRBIqcItem(proberCardId, pinMinlen, pinMaxdiam, pinLevel);
     }
 }

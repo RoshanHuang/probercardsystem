@@ -120,4 +120,12 @@ public class OperatorService {
         requestEntity.add("ownerid",ownerid);
         restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/ReTD",requestEntity,String.class);
     }
+    public void clearRBIQCItem(String proberCardId, double pinMinlen, double pinMaxdiam, double pinLevel) {
+        MultiValueMap<String, Object> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("proberCardId",proberCardId);
+        requestEntity.add("pinMinlen",pinMinlen);
+        requestEntity.add("pinMaxdiam",pinMaxdiam);
+        requestEntity.add("pinLevel",pinLevel);
+        restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/RBIqcItem",requestEntity,Object.class);
+    }
 }

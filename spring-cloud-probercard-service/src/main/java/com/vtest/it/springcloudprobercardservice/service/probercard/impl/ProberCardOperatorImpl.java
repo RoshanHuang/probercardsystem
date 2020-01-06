@@ -37,7 +37,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMinTime'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMaxTime'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByRebuild'"),
-            @CacheEvict(value = "ProberCardCache",key = "'getProberCardStatus&'+#bean.proberCardId")
+            @CacheEvict(value = "ProberCardCache",key = "'getProberCardStatus&'+#bean.proberCardId"),
+            @CacheEvict(value = "ProberCardCache",key = "'getPinMinByMaxTime&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void addNewIqcRecord(IqcRecordBean bean) {
@@ -53,19 +54,18 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMaxTime'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByRebuild'"),
             @CacheEvict(value = "ProberCardCache",key = "'getProberCardStatus&'+#bean.proberCardId"),
-            @CacheEvict(value = "ProberCardCache",key = "'getExistFlag&'+#bean.proberCardId")
+            @CacheEvict(value = "ProberCardCache",key = "'getExistFlag&'+#bean.proberCardId"),
+            @CacheEvict(value = "ProberCardCache",key = "'getPinMinByMaxTime&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void addRBIqcRecord(IqcRecordBean  bean){
         Integer count=proberCardInformation.getExistFlag(bean.getProberCardId());
+        proberCardOperator.addNewIqcRecord(bean);
         if(count>0){
           if(bean.getLastProcess().equals("ReBuild_Back")){
-              proberCardOperator.addRBIqcRecord(bean);
-          }else {
-              proberCardOperator.addNewIqcRecord(bean);
+              proberCardOperator.updateRBIqcRecord(bean);
           }
         }else {
-            proberCardOperator.addNewIqcRecord(bean);
             proberCardOperator.addRBIqcRecord(bean);
         }
         proberCardOperator.updateProberCardState(bean.getProberCardId(), bean.getNextStation(),bean.getLastProcess(),bean.getUpdateOperator());
@@ -109,7 +109,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     @Caching(evict = {
             @CacheEvict(value = "ProberCardCache",key = "'getAllMaintainRecord'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'"),
-            @CacheEvict(value = "ProberCardCache",key = "'getProberCardStatus&'+#bean.proberCardId")
+            @CacheEvict(value = "ProberCardCache",key = "'getProberCardStatus&'+#bean.proberCardId"),
+            @CacheEvict(value = "ProberCardCache",key = "'getAfterPinByMaxTime&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void addNewMaintainRecord(ProberCardMaintainBean bean) {
@@ -217,7 +218,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
 
     @Override
     @Caching(evict = {
-            @CacheEvict(value = "ProberCardCache",key = "'getAllMaintainRecord'")
+            @CacheEvict(value = "ProberCardCache",key = "'getAllMaintainRecord'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getAfterPinByMaxTime&'+#proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public boolean updateMaintainItem(String proberCardId, double afterPinlen, double afterPindiam, double afterPinlevel) {
@@ -229,7 +231,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecord'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMinTime'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMaxTime'"),
-            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByRebuild'")
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByRebuild'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getPinMinByMaxTime&'+#proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public boolean updateIQCItem(String proberCardId, double pinMinlen, double pinMaxdiam, double pinLevel) {
@@ -256,5 +259,28 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public boolean cleanTD(String cardid,String ownerid){
       return proberCardOperator.cleanTD(cardid,ownerid);
+    }
+
+    @Override
+    @Caching(evict = {
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecord'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMinTime'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMaxTime'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByRebuild'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getPinMinByMaxTime&'+#bean.proberCardId")
+    })
+    public void updateRBIqcRecord(IqcRecordBean bean){
+        proberCardOperator.updateRBIqcRecord(bean);
+    }
+    @Override
+    @Caching(evict = {
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecord'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMinTime'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByMaxTime'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getAllIQCRecordByRebuild'"),
+            @CacheEvict(value = "ProberCardCache",key = "'getPinMinByMaxTime&'+#proberCardId")
+    })
+    public boolean updateRBIqcItem(String proberCardId,double pinMinlen,double pinMaxdiam,double pinLevel){
+        return  proberCardOperator.updateRBIqcItem(proberCardId, pinMinlen, pinMaxdiam, pinLevel);
     }
 }

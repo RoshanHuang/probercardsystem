@@ -51,4 +51,8 @@ public interface ProberCardOperatorDao {
     public void addCheckProberCard(ReleaseProberCardBean bean);
 
     public boolean cleanTD(@Param("cardid") String cardid, @Param("ownerid") String ownerid);
+
+    public void updateRBIqcRecord(IqcRecordBean bean);
+
+    public boolean updateRBIqcItem(@Param("proberCardId") String proberCardId, @Param("pinMinlen") double pinMinlen, @Param("pinMaxdiam") double pinMaxdiam, @Param("pinLevel") double pinLevel);
 }
