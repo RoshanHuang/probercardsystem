@@ -1,5 +1,7 @@
 package com.vtest.it.springcloudprobercardservice.service.probercard.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.vtest.it.springcloudprobercardservice.service.probercard.ProberCardInformation;
 import com.vtest.it.springcloudprobercardservice.service.probercard.ProberCardOperator;
 import org.apache.log4j.Logger;
@@ -17,6 +19,8 @@ public class ProberCardInformationImplTest {
     private ProberCardInformation proberCardInformation;
     @Autowired
     private ProberCardOperator proberCardOperator;
+    @Autowired
+    private ProberCardInformationImpl proberCardInformationImpl;
 
     @Test
    public void getEXInfoSingle() {
@@ -30,6 +34,8 @@ public class ProberCardInformationImplTest {
 //        }
 //        boolean flag=proberCardOperator.updateProberCardInfoReleaseFlag("S-1",false);
 //        TESTLOGGER.warn(flag);
-        proberCardOperator.cleanTD("S-1","V236");
+//        proberCardOperator.cleanTD("S-1","V236");
+        String[] array={"T20-PC-01"};
+        System.err.println(JSON.toJSONString(proberCardInformationImpl.getMaintainProberCard(array)));
     }
 }
