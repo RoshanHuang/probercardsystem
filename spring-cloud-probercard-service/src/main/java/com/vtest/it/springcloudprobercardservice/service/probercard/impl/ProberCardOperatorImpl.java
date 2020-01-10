@@ -24,7 +24,7 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     @Caching(evict = {
             @CacheEvict(value = "ProberCardCache",key = "'getAllList'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'"),
-            @CacheEvict(value = "ProberCardCache",key = "'getSpec'+#bean.proberCardId")
+            @CacheEvict(value = "ProberCardCache", key = "'getSpec&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class )
     public void addProberCardInfo(ProberCardEntityBean bean) {
@@ -169,7 +169,7 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
             @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllList'"),
             @CacheEvict(value = "ProberCardCache",key = "'getCard&'+#bean.proberCardId"),
-            @CacheEvict(value = "ProberCardCache",key = "'getSpec'+#bean.proberCardId")
+            @CacheEvict(value = "ProberCardCache", key = "'getSpec&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void updateProberCard(ProberCardEntityBean bean) {
@@ -191,7 +191,7 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     @Caching(evict = {
             @CacheEvict(value = "ProberCardCache",key = "'getAllList'"),
             @CacheEvict(value = "ProberCardCache",key = "'getProberCardReleaseFlag&'+#proberCardId"),
-            @CacheEvict(value = "ProberCardCache",key = "'getSpec'+#proberCardId")
+            @CacheEvict(value = "ProberCardCache", key = "'getSpec&'+#proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public boolean updateProberCardInfoReleaseFlag(String proberCardId, boolean releaseFlag) {
@@ -213,7 +213,7 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
             @CacheEvict(value = "ProberCardCache",key = "'getAllList'"),
             @CacheEvict(value = "ProberCardCache",key = "'getCard&'+#proberCardId"),
             @CacheEvict(value = "ProberCardCache",key = "'getInfoRebuildCount&'+#proberCardId"),
-            @CacheEvict(value = "ProberCardCache",key = "'getSpec'+#proberCardId")
+            @CacheEvict(value = "ProberCardCache", key = "'getSpec&'+#proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public boolean updateProberCardItem(String proberCardId, Integer rebuildCount) {
