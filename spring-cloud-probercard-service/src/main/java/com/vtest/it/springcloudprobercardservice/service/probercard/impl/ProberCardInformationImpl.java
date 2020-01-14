@@ -68,6 +68,7 @@ public class ProberCardInformationImpl implements ProberCardInformation {
     }
 
     @Override
+    @Transactional(transactionManager = "transactionManager", propagation = Propagation.REQUIRED, isolation = Isolation.READ_UNCOMMITTED)
     @Cacheable(value = "ProberCardCache",key = "#root.methodName")
     public ArrayList<ProberCardMaintainBean> getAllMaintainRecord() {
         return informationDao.getAllMaintainRecord();
