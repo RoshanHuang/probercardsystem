@@ -88,43 +88,43 @@ public class ProberCardInformationImpl implements ProberCardInformation {
     }
 
     @Override
-    public ArrayList<OutProberCardBean> getOutProberCard(String[] proberCardIdArrays) {
-        return informationDao.getOutProberCard(proberCardIdArrays);
+    public ArrayList<OutProberCardBean> getOutProberCard(String proberCardId) {
+        return informationDao.getOutProberCard(proberCardId);
     }
 
     @Override
-    public ArrayList<BackProberCardBean> getBackProberCard(String[] proberCardIdArrays) {
-        return informationDao.getBackProberCard(proberCardIdArrays);
+    public ArrayList<BackProberCardBean> getBackProberCard(String proberCardId) {
+        return informationDao.getBackProberCard(proberCardId);
     }
 
     @Override
-    public ArrayList<ProberCardEntityBean> getInfoProberCard(String[] proberCardIdArrays) {
-        return informationDao.getInfoProberCard(proberCardIdArrays);
+    public ArrayList<ProberCardEntityBean> getInfoProberCard(String proberCardId) {
+        return informationDao.getInfoProberCard(proberCardId);
     }
 
     @Override
-    public ArrayList<IqcRecordBean> getIQCProberCard(String[] proberCardIdArrays) {
-        return informationDao.getIQCProberCard(proberCardIdArrays);
+    public ArrayList<IqcRecordBean> getIQCProberCard(String proberCardId) {
+        return informationDao.getIQCProberCard(proberCardId);
     }
 
     @Override
-    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(String[] proberCardIdArrays) {
-        return informationDao.getMaintainProberCard(proberCardIdArrays);
+    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(String proberCardId) {
+        return informationDao.getMaintainProberCard(proberCardId);
     }
 
     @Override
-    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(String[] proberCardIdArrays) {
-        return informationDao.getReleaseProberCard(proberCardIdArrays);
+    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(String proberCardId) {
+        return informationDao.getReleaseProberCard(proberCardId);
     }
 
     @Override
-    public ArrayList<ProberCardEntityBean> getProberCardId(String[] custNameArrays) {
-        return informationDao.getProberCardId(custNameArrays);
+    public ArrayList<ProberCardEntityBean> getProberCardId(String custName) {
+        return informationDao.getProberCardId(custName);
     }
 
     @Override
-    public ArrayList<ProberCardExtensionBean> getEXRecord(String[] proberCardIdArrays) {
-        return informationDao.getEXRecord(proberCardIdArrays);
+    public ArrayList<ProberCardExtensionBean> getEXRecord(String proberCardId) {
+        return informationDao.getEXRecord(proberCardId);
     }
 
     @Override

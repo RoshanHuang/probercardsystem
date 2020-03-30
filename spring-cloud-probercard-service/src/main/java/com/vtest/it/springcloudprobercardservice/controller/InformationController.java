@@ -56,37 +56,45 @@ public class InformationController {
     public ArrayList<ProberCardTDBean> getTd() {
         return proberCardInformation.getTd();
     }
-    @GetMapping(value = "/OutProberCard/{proberCardIdArrays}",produces = {"application/json;charset=UTF-8"})
-    public ArrayList<OutProberCardBean> getOutProberCard(@PathVariable("proberCardIdArrays") String[] proberCardIdArrays) {
-        return proberCardInformation.getOutProberCard(proberCardIdArrays);
+
+    @GetMapping(value = "/OutProberCard/{proberCardId}", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<OutProberCardBean> getOutProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return proberCardInformation.getOutProberCard(proberCardId);
     }
-    @GetMapping(value = "/BackProberCard/{proberCardIdArrays}",produces = {"application/json;charset=UTF-8"})
-    public ArrayList<BackProberCardBean> getBackProberCard(@PathVariable("proberCardIdArrays") String[] proberCardIdArrays) {
-        return proberCardInformation.getBackProberCard(proberCardIdArrays);
+
+    @GetMapping(value = "/BackProberCard/{proberCardId}", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<BackProberCardBean> getBackProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return proberCardInformation.getBackProberCard(proberCardId);
     }
-    @GetMapping(value = "/InfoProberCard/{proberCardIdArrays}",produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ProberCardEntityBean> getInfoProberCard(@PathVariable("proberCardIdArrays") String[] proberCardIdArrays) {
-        return proberCardInformation.getInfoProberCard(proberCardIdArrays);
+
+    @GetMapping(value = "/InfoProberCard/{proberCardId}", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ProberCardEntityBean> getInfoProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return proberCardInformation.getInfoProberCard(proberCardId);
     }
-    @GetMapping(value = "/IQCProberCard/{proberCardIdArrays}",produces = {"application/json;charset=UTF-8"})
-    public ArrayList<IqcRecordBean> getIQCProberCard(@PathVariable("proberCardIdArrays") String[] proberCardIdArrays) {
-        return proberCardInformation.getIQCProberCard(proberCardIdArrays);
+
+    @GetMapping(value = "/IQCProberCard/{proberCardId}", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<IqcRecordBean> getIQCProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return proberCardInformation.getIQCProberCard(proberCardId);
     }
-    @GetMapping(value = "/MaintainProberCard/{proberCardIdArrays}",produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(@PathVariable("proberCardIdArrays") String[] proberCardIdArrays) {
-        return proberCardInformation.getMaintainProberCard(proberCardIdArrays);
+
+    @GetMapping(value = "/MaintainProberCard/{proberCardId}", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return proberCardInformation.getMaintainProberCard(proberCardId);
     }
-    @GetMapping(value = "/ReleaseProberCard/{proberCardIdArrays}",produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(@PathVariable("proberCardIdArrays") String[] proberCardIdArrays) {
-        return proberCardInformation.getReleaseProberCard(proberCardIdArrays);
+
+    @GetMapping(value = "/ReleaseProberCard/{proberCardId}", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return proberCardInformation.getReleaseProberCard(proberCardId);
     }
-    @GetMapping(value = "/ProberCardId/{custNameArrays}",produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ProberCardEntityBean> getProberCardId(@PathVariable("custNameArrays") String[] custNameArrays) {
-        return proberCardInformation.getProberCardId(custNameArrays);
+
+    @GetMapping(value = "/ProberCardId/{custName}", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ProberCardEntityBean> getProberCardId(@PathVariable("custName") String custName) {
+        return proberCardInformation.getProberCardId(custName);
     }
-    @GetMapping(value = "/EXRecord/{proberCardIdArrays}",produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ProberCardExtensionBean> getEXRecord(@PathVariable("proberCardIdArrays") String[] proberCardIdArrays) {
-        return proberCardInformation.getEXRecord(proberCardIdArrays);
+
+    @GetMapping(value = "/EXRecord/{proberCardId}", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ProberCardExtensionBean> getEXRecord(@PathVariable("proberCardId") String proberCardId) {
+        return proberCardInformation.getEXRecord(proberCardId);
     }
     @GetMapping(value = "/ProberCardEX",produces = {"application/json;charset=UTF-8"})
     public ArrayList<String> getProberCardEX() {

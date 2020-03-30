@@ -82,51 +82,51 @@ public class ProberCardController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/OutProberCard")
-    public String getOutProberCard(String[] proberCardIdArrays) {
-        return probercardInfoService.getOutProberCard(proberCardIdArrays);
+    @GetMapping(value = "/OutProberCard/{proberCardId}")
+    public String getOutProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return probercardInfoService.getOutProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/BackProberCard")
-    public String getBackProberCard(String[] proberCardIdArrays) {
-        return probercardInfoService.getBackProberCard(proberCardIdArrays);
+    @GetMapping(value = "/BackProberCard/{proberCardId}")
+    public String getBackProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return probercardInfoService.getBackProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/InfoProberCard")
-    public String getInfoProberCard(String[] proberCardIdArrays) {
-        return probercardInfoService.getInfoProberCard(proberCardIdArrays);
+    @GetMapping(value = "/InfoProberCard/{proberCardId}", produces = {"application/json;charset=UTF-8"})
+    public String getInfoProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return probercardInfoService.getInfoProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/IQCProberCard")
-    public String getIQCProberCard(String[] proberCardIdArrays) {
-        return probercardInfoService.getIQCProberCard(proberCardIdArrays);
+    @GetMapping(value = "/IQCProberCard/{proberCardId}")
+    public String getIQCProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return probercardInfoService.getIQCProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/MaintainProberCard")
-    public String getMaintainProberCard(String[] proberCardIdArrays) {
-        return probercardInfoService.getMaintainProberCard(proberCardIdArrays);
+    @GetMapping(value = "/MaintainProberCard/{proberCardId}")
+    public String getMaintainProberCard(@PathVariable("proberCardId") String proberCardId) {
+        return probercardInfoService.getMaintainProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/ReleaseProberCard")
-    public String getReleaseProberCard(String[] proberCardIdArrays) {
-        return probercardInfoService.getReleaseProberCard(proberCardIdArrays);
+    @GetMapping(value = "/ReleaseProberCard/{proberCardId}")
+    public String getReleaseProberCard(String proberCardId) {
+        return probercardInfoService.getReleaseProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/ProberCardId")
-    public String getProberCardId(String[] custNameArrays) {
-        return probercardInfoService.getProberCardId(custNameArrays);
+    @GetMapping(value = "/ProberCardId/{custName}")
+    public String getProberCardId(@PathVariable("custName") String custName) {
+        return probercardInfoService.getProberCardId(custName);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/EXRecord")
-    public String getEXRecord(String[] proberCardIdArrays) {
-        return probercardInfoService.getEXRecord(proberCardIdArrays);
+    @GetMapping(value = "/EXRecord/{proberCardId}")
+    public String getEXRecord(@PathVariable("proberCardId") String proberCardId) {
+        return probercardInfoService.getEXRecord(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")

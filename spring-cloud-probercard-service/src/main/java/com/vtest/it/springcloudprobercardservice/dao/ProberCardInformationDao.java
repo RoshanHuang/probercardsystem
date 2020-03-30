@@ -32,21 +32,21 @@ public interface ProberCardInformationDao {
 
     public ArrayList<ProberCardTDBean> getTd();
 
-    public ArrayList<OutProberCardBean> getOutProberCard(@Param("proberCardIdArrays") String[] proberCardIdArrays);
+    public ArrayList<OutProberCardBean> getOutProberCard(@Param("proberCardId") String proberCardId);
 
-    public ArrayList<BackProberCardBean> getBackProberCard(@Param("proberCardIdArrays") String[] proberCardIdArrays);
+    public ArrayList<BackProberCardBean> getBackProberCard(@Param("proberCardId") String proberCardId);
 
-    public ArrayList<ProberCardEntityBean> getInfoProberCard(@Param("proberCardIdArrays") String[] proberCardIdArrays);
+    public ArrayList<ProberCardEntityBean> getInfoProberCard(@Param("proberCardId") String proberCardId);
 
-    public ArrayList<IqcRecordBean> getIQCProberCard(@Param("proberCardIdArrays") String[] proberCardIdArrays);
+    public ArrayList<IqcRecordBean> getIQCProberCard(@Param("proberCardId") String proberCardId);
 
-    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(@Param("proberCardIdArrays") String[] proberCardIdArrays);
+    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(@Param("proberCardId") String proberCardId);
 
-    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(@Param("proberCardIdArrays") String[] proberCardIdArrays);
+    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(@Param("proberCardId") String proberCardId);
 
-    public ArrayList<ProberCardEntityBean> getProberCardId(@Param("custNameArrays") String[] custNameArrays);
+    public ArrayList<ProberCardEntityBean> getProberCardId(@Param("custName") String custName);
 
-    public ArrayList<ProberCardExtensionBean> getEXRecord(@Param("proberCardIdArrays") String[] proberCardIdArrays);
+    public ArrayList<ProberCardExtensionBean> getEXRecord(@Param("proberCardId") String proberCardId);
 
     public ArrayList<String> getProberCardEX();
 

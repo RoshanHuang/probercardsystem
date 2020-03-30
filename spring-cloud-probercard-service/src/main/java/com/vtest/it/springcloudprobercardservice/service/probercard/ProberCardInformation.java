@@ -27,21 +27,21 @@ public interface ProberCardInformation {
 
     public ArrayList<ProberCardTDBean> getTd();
 
-    public ArrayList<OutProberCardBean> getOutProberCard(String[] proberCardIdArrays);
+    public ArrayList<OutProberCardBean> getOutProberCard(String proberCardId);
 
-    public ArrayList<BackProberCardBean> getBackProberCard(String[] proberCardIdArrays);
+    public ArrayList<BackProberCardBean> getBackProberCard(String proberCardId);
 
-    public ArrayList<ProberCardEntityBean> getInfoProberCard(String[] proberCardIdArrays);
+    public ArrayList<ProberCardEntityBean> getInfoProberCard(String proberCardId);
 
-    public ArrayList<IqcRecordBean> getIQCProberCard(String[] proberCardIdArrays);
+    public ArrayList<IqcRecordBean> getIQCProberCard(String proberCardId);
 
-    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(String[] proberCardIdArrays);
+    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(String proberCardId);
 
-    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(String[] proberCardIdArrays);
+    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(String proberCardId);
 
-    public ArrayList<ProberCardEntityBean> getProberCardId(String[] custNameArrays);
+    public ArrayList<ProberCardEntityBean> getProberCardId(String custName);
 
-    public ArrayList<ProberCardExtensionBean> getEXRecord(String[] proberCardIdArrays);
+    public ArrayList<ProberCardExtensionBean> getEXRecord(String proberCardId);
 
     public ArrayList<String> getProberCardEX();
 
