@@ -82,50 +82,50 @@ public class ProberCardController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/OutProberCard/{proberCardId}")
-    public String getOutProberCard(@PathVariable("proberCardId") String proberCardId) {
+    @PostMapping(value = "/OutProberCardRecord")
+    public String getOutProberCard(@RequestParam("proberCardId") String proberCardId) {
         return probercardInfoService.getOutProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/BackProberCard/{proberCardId}")
-    public String getBackProberCard(@PathVariable("proberCardId") String proberCardId) {
+    @PostMapping(value = "/BackProberCardRecord")
+    public String getBackProberCard(@RequestParam("proberCardId") String proberCardId) {
         return probercardInfoService.getBackProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/InfoProberCard/{proberCardId}", produces = {"application/json;charset=UTF-8"})
-    public String getInfoProberCard(@PathVariable("proberCardId") String proberCardId) {
+    @PostMapping(value = "/InfoProberCardRecord", produces = {"application/json;charset=UTF-8"})
+    public String getInfoProberCard(@RequestParam("proberCardId") String proberCardId) {
         return probercardInfoService.getInfoProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/IQCProberCard/{proberCardId}")
-    public String getIQCProberCard(@PathVariable("proberCardId") String proberCardId) {
+    @PostMapping(value = "/IQCProberCardRecord")
+    public String getIQCProberCard(@RequestParam("proberCardId") String proberCardId) {
         return probercardInfoService.getIQCProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/MaintainProberCard/{proberCardId}")
-    public String getMaintainProberCard(@PathVariable("proberCardId") String proberCardId) {
+    @PostMapping(value = "/MaintainProberCardRecord")
+    public String getMaintainProberCard(@RequestParam("proberCardId") String proberCardId) {
         return probercardInfoService.getMaintainProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/ReleaseProberCard/{proberCardId}")
-    public String getReleaseProberCard(String proberCardId) {
+    @PostMapping(value = "/ReleaseProberCardRecord")
+    public String getReleaseProberCard(@RequestParam("proberCardId") String proberCardId) {
         return probercardInfoService.getReleaseProberCard(proberCardId);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/ProberCardId/{custName}")
-    public String getProberCardId(@PathVariable("custName") String custName) {
+    @PostMapping(value = "/ProberCardIdRecord")
+    public String getProberCardId(@RequestParam("custName") String custName) {
         return probercardInfoService.getProberCardId(custName);
     }
 
     @PreAuthorize("hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING')")
-    @GetMapping(value = "/EXRecord/{proberCardId}")
-    public String getEXRecord(@PathVariable("proberCardId") String proberCardId) {
+    @PostMapping(value = "/EXRecordRecord")
+    public String getEXRecord(@RequestParam("proberCardId") String proberCardId) {
         return probercardInfoService.getEXRecord(proberCardId);
     }
 

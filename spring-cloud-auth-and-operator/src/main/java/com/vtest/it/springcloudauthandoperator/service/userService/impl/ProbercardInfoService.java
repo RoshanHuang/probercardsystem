@@ -57,42 +57,42 @@ public class ProbercardInfoService {
     }
 
     public String getOutProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/OutProberCard/{proberCardId}", String.class, proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/OutProberCardRecord", String.class, proberCardId);
         return responseEntity.getBody();
     }
 
     public String getBackProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/BackProberCard/{proberCardId}", String.class, proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/BackProberCard", String.class, proberCardId);
         return responseEntity.getBody();
     }
 
     public String getInfoProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/InfoProberCard/{proberCardId}", String.class, proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/InfoProberCard", String.class, proberCardId);
         return responseEntity.getBody();
     }
 
     public String getIQCProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/IQCProberCard/{proberCardId}", String.class, proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/IQCProberCard", String.class, proberCardId);
         return responseEntity.getBody();
     }
 
     public String getMaintainProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/MaintainProberCard/{proberCardId}", String.class, proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/MaintainProberCard", String.class, proberCardId);
         return responseEntity.getBody();
     }
 
     public String getReleaseProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/ReleaseProberCard/{proberCardId}", String.class, proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/ReleaseProberCard", String.class, proberCardId);
         return responseEntity.getBody();
     }
 
     public String getProberCardId(String custName) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/ProberCardId/{custName}", String.class, custName);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/ProberCardId", String.class, custName);
         return responseEntity.getBody();
     }
 
     public String getEXRecord(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/EXRecord/{proberCardId}", String.class, proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/EXRecord", String.class, proberCardId);
         return responseEntity.getBody();
     }
     public String getProberCardEX(){

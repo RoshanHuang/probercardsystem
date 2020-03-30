@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 @Service
 @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE)
 public class ProberCardOperatorImpl implements ProberCardOperator {
@@ -286,5 +288,45 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     })
     public boolean updateRBIqcItem(String proberCardId,double pinMinlen,double pinMaxdiam,double pinLevel){
         return  proberCardOperator.updateRBIqcItem(proberCardId, pinMinlen, pinMaxdiam, pinLevel);
+    }
+
+    @Override
+    public ArrayList<OutProberCardBean> getOutProberCard(String proberCardId) {
+        return proberCardOperator.getOutProberCard(proberCardId);
+    }
+
+    @Override
+    public ArrayList<BackProberCardBean> getBackProberCard(String proberCardId) {
+        return proberCardOperator.getBackProberCard(proberCardId);
+    }
+
+    @Override
+    public ArrayList<ProberCardEntityBean> getInfoProberCard(String proberCardId) {
+        return proberCardOperator.getInfoProberCard(proberCardId);
+    }
+
+    @Override
+    public ArrayList<IqcRecordBean> getIQCProberCard(String proberCardId) {
+        return proberCardOperator.getIQCProberCard(proberCardId);
+    }
+
+    @Override
+    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(String proberCardId) {
+        return proberCardOperator.getMaintainProberCard(proberCardId);
+    }
+
+    @Override
+    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(String proberCardId) {
+        return proberCardOperator.getReleaseProberCard(proberCardId);
+    }
+
+    @Override
+    public ArrayList<ProberCardEntityBean> getProberCardId(String custName) {
+        return proberCardOperator.getProberCardId(custName);
+    }
+
+    @Override
+    public ArrayList<ProberCardExtensionBean> getEXRecord(String proberCardId) {
+        return proberCardOperator.getEXRecord(proberCardId);
     }
 }

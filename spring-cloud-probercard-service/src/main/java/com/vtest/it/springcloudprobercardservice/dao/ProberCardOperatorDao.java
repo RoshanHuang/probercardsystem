@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+
 @Mapper
 @Repository
 public interface ProberCardOperatorDao {
@@ -55,4 +57,20 @@ public interface ProberCardOperatorDao {
     public void updateRBIqcRecord(IqcRecordBean bean);
 
     public boolean updateRBIqcItem(@Param("proberCardId") String proberCardId, @Param("pinMinlen") double pinMinlen, @Param("pinMaxdiam") double pinMaxdiam, @Param("pinLevel") double pinLevel);
+
+    public ArrayList<OutProberCardBean> getOutProberCard(@Param("proberCardId") String proberCardId);
+
+    public ArrayList<BackProberCardBean> getBackProberCard(@Param("proberCardId") String proberCardId);
+
+    public ArrayList<ProberCardEntityBean> getInfoProberCard(@Param("proberCardId") String proberCardId);
+
+    public ArrayList<IqcRecordBean> getIQCProberCard(@Param("proberCardId") String proberCardId);
+
+    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(@Param("proberCardId") String proberCardId);
+
+    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(@Param("proberCardId") String proberCardId);
+
+    public ArrayList<ProberCardEntityBean> getProberCardId(@Param("custName") String custName);
+
+    public ArrayList<ProberCardExtensionBean> getEXRecord(@Param("proberCardId") String proberCardId);
 }

@@ -5,6 +5,8 @@ import com.vtest.it.springcloudprobercardservice.service.probercard.ProberCardOp
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/operator")
 @CrossOrigin
@@ -113,5 +115,45 @@ public class OperatorController {
         pinMaxdiam = 0;
         pinLevel = 0;
         proberCardOperator.updateRBIqcItem(proberCardId, pinMinlen, pinMaxdiam, pinLevel);
+    }
+
+    @PostMapping(value = "/OutProberCardRecord", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<OutProberCardBean> getOutProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return proberCardOperator.getOutProberCard(proberCardId);
+    }
+
+    @PostMapping(value = "/BackProberCard", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<BackProberCardBean> getBackProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return proberCardOperator.getBackProberCard(proberCardId);
+    }
+
+    @PostMapping(value = "/InfoProberCard", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ProberCardEntityBean> getInfoProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return proberCardOperator.getInfoProberCard(proberCardId);
+    }
+
+    @PostMapping(value = "/IQCProberCard", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<IqcRecordBean> getIQCProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return proberCardOperator.getIQCProberCard(proberCardId);
+    }
+
+    @PostMapping(value = "/MaintainProberCard", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return proberCardOperator.getMaintainProberCard(proberCardId);
+    }
+
+    @PostMapping(value = "/ReleaseProberCard", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return proberCardOperator.getReleaseProberCard(proberCardId);
+    }
+
+    @PostMapping(value = "/ProberCardId", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ProberCardEntityBean> getProberCardId(@RequestParam("custName") String custName) {
+        return proberCardOperator.getProberCardId(custName);
+    }
+
+    @PostMapping(value = "/EXRecord", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<ProberCardExtensionBean> getEXRecord(@RequestParam("proberCardId") String proberCardId) {
+        return proberCardOperator.getEXRecord(proberCardId);
     }
 }
