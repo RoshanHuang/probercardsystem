@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 @Service
@@ -57,42 +59,58 @@ public class ProbercardInfoService {
     }
 
     public String getOutProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/OutProberCardRecord", String.class, proberCardId);
+        MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("proberCardId", proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/OutProberCardRecord", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String getBackProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/BackProberCard", String.class, proberCardId);
+        MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("proberCardId", proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/BackProberCard", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String getInfoProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/InfoProberCard", String.class, proberCardId);
+        MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("proberCardId", proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/InfoProberCard", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String getIQCProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/IQCProberCard", String.class, proberCardId);
+        MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("proberCardId", proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/IQCProberCard", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String getMaintainProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/MaintainProberCard", String.class, proberCardId);
+        MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("proberCardId", proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/MaintainProberCard", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String getReleaseProberCard(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/ReleaseProberCard", String.class, proberCardId);
+        MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("proberCardId", proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/ReleaseProberCard", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String getProberCardId(String custName) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/ProberCardId", String.class, custName);
+        MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("custName", custName);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/ProberCardId", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
     public String getEXRecord(String proberCardId) {
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/operator/EXRecord", String.class, proberCardId);
+        MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
+        requestEntity.add("proberCardId", proberCardId);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/prober-card-service/operator/EXRecord", requestEntity, String.class);
         return responseEntity.getBody();
     }
     public String getProberCardEX(){

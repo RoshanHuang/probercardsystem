@@ -1,11 +1,10 @@
 package com.vtest.it.springcloudprobercardservice.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.vtest.it.springcloudprobercardservice.domain.*;
 import com.vtest.it.springcloudprobercardservice.service.probercard.ProberCardOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/operator")
@@ -118,42 +117,41 @@ public class OperatorController {
     }
 
     @PostMapping(value = "/OutProberCardRecord", produces = {"application/json;charset=UTF-8"})
-    public ArrayList<OutProberCardBean> getOutProberCard(@RequestParam("proberCardId") String proberCardId) {
-        return proberCardOperator.getOutProberCard(proberCardId);
+    public String getOutProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return JSON.toJSONString(proberCardOperator.getOutProberCard(proberCardId));
     }
-
     @PostMapping(value = "/BackProberCard", produces = {"application/json;charset=UTF-8"})
-    public ArrayList<BackProberCardBean> getBackProberCard(@RequestParam("proberCardId") String proberCardId) {
-        return proberCardOperator.getBackProberCard(proberCardId);
+    public String getBackProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return JSON.toJSONString(proberCardOperator.getBackProberCard(proberCardId));
     }
 
     @PostMapping(value = "/InfoProberCard", produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ProberCardEntityBean> getInfoProberCard(@RequestParam("proberCardId") String proberCardId) {
-        return proberCardOperator.getInfoProberCard(proberCardId);
+    public String getInfoProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return JSON.toJSONString(proberCardOperator.getInfoProberCard(proberCardId));
     }
 
     @PostMapping(value = "/IQCProberCard", produces = {"application/json;charset=UTF-8"})
-    public ArrayList<IqcRecordBean> getIQCProberCard(@RequestParam("proberCardId") String proberCardId) {
-        return proberCardOperator.getIQCProberCard(proberCardId);
+    public String getIQCProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return JSON.toJSONString(proberCardOperator.getIQCProberCard(proberCardId));
     }
 
     @PostMapping(value = "/MaintainProberCard", produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ProberCardMaintainBean> getMaintainProberCard(@RequestParam("proberCardId") String proberCardId) {
-        return proberCardOperator.getMaintainProberCard(proberCardId);
+    public String getMaintainProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return JSON.toJSONString(proberCardOperator.getMaintainProberCard(proberCardId));
     }
 
     @PostMapping(value = "/ReleaseProberCard", produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ReleaseProberCardBean> getReleaseProberCard(@RequestParam("proberCardId") String proberCardId) {
-        return proberCardOperator.getReleaseProberCard(proberCardId);
+    public String getReleaseProberCard(@RequestParam("proberCardId") String proberCardId) {
+        return JSON.toJSONString(proberCardOperator.getReleaseProberCard(proberCardId));
     }
 
     @PostMapping(value = "/ProberCardId", produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ProberCardEntityBean> getProberCardId(@RequestParam("custName") String custName) {
-        return proberCardOperator.getProberCardId(custName);
+    public String getProberCardId(@RequestParam("custName") String custName) {
+        return JSON.toJSONString(proberCardOperator.getProberCardId(custName));
     }
 
     @PostMapping(value = "/EXRecord", produces = {"application/json;charset=UTF-8"})
-    public ArrayList<ProberCardExtensionBean> getEXRecord(@RequestParam("proberCardId") String proberCardId) {
-        return proberCardOperator.getEXRecord(proberCardId);
+    public String getEXRecord(@RequestParam("proberCardId") String proberCardId) {
+        return JSON.toJSONString(proberCardOperator.getEXRecord(proberCardId));
     }
 }
