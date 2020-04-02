@@ -120,27 +120,28 @@ public class OperatorController {
     public String getOutProberCard(@RequestParam("proberCardId") String proberCardId) {
         return JSON.toJSONString(proberCardOperator.getOutProberCard(proberCardId));
     }
-    @PostMapping(value = "/BackProberCard", produces = {"application/json;charset=UTF-8"})
+
+    @PostMapping(value = "/BackProberCardRecord", produces = {"application/json;charset=UTF-8"})
     public String getBackProberCard(@RequestParam("proberCardId") String proberCardId) {
         return JSON.toJSONString(proberCardOperator.getBackProberCard(proberCardId));
     }
 
-    @PostMapping(value = "/InfoProberCard", produces = {"application/json;charset=UTF-8"})
+    @PostMapping(value = "/InfoProberCardRecord", produces = {"application/json;charset=UTF-8"})
     public String getInfoProberCard(@RequestParam("proberCardId") String proberCardId) {
         return JSON.toJSONString(proberCardOperator.getInfoProberCard(proberCardId));
     }
 
-    @PostMapping(value = "/IQCProberCard", produces = {"application/json;charset=UTF-8"})
+    @PostMapping(value = "/IQCProberCardRecord", produces = {"application/json;charset=UTF-8"})
     public String getIQCProberCard(@RequestParam("proberCardId") String proberCardId) {
         return JSON.toJSONString(proberCardOperator.getIQCProberCard(proberCardId));
     }
 
-    @PostMapping(value = "/MaintainProberCard", produces = {"application/json;charset=UTF-8"})
+    @PostMapping(value = "/MaintainProberCardRecord", produces = {"application/json;charset=UTF-8"})
     public String getMaintainProberCard(@RequestParam("proberCardId") String proberCardId) {
         return JSON.toJSONString(proberCardOperator.getMaintainProberCard(proberCardId));
     }
 
-    @PostMapping(value = "/ReleaseProberCard", produces = {"application/json;charset=UTF-8"})
+    @PostMapping(value = "/ReleaseProberCardRecord", produces = {"application/json;charset=UTF-8"})
     public String getReleaseProberCard(@RequestParam("proberCardId") String proberCardId) {
         return JSON.toJSONString(proberCardOperator.getReleaseProberCard(proberCardId));
     }
