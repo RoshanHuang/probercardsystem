@@ -318,4 +318,10 @@ public class ProberCardController {
     public void clearRBIQCItem(String proberCardId, double pinMinlen, double pinMaxdiam, double pinLevel) {
         operatorService.clearRBIQCItem(proberCardId, pinMinlen, pinMaxdiam, pinLevel);
     }
+
+    @PreAuthorize("hasAuthority('ROLE_PTE-TOOLING') or hasAuthority('ROLE_PCR-TOOLING') or hasAuthority('ROLE_PCRLeader-TOOLING') or hasAuthority('ROLE_NORMAL-TOOLING') or hasAuthority('ROLE_ADMIN-TOOLING') or hasAuthority('ROLE_TOP-TOOLING') ")
+    @GetMapping(value = "/DepthSpec")
+    public String getDepthSpec(String proberCardId) {
+        return probercardInfoService.getDepthSpec(proberCardId);
+    }
 }

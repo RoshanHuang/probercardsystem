@@ -181,4 +181,11 @@ public class ProberCardInformationImpl implements ProberCardInformation {
     public double getAfterPinByMaxTime(String proberCardId){
         return  informationDao.getAfterPinByMaxTime(proberCardId);
     }
+
+    @Override
+    @Transactional(transactionManager = "transactionManager", propagation = Propagation.REQUIRED, isolation = Isolation.READ_UNCOMMITTED)
+    @Cacheable(value = "ProberCardCache", key = "#root.methodName+'&'+#proberCardId")
+    public ArrayList<DepthSpecBean> getDepthSpec(String proberCardId) {
+        return informationDao.getDepthSpec(proberCardId);
+    }
 }

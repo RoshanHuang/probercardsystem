@@ -65,4 +65,6 @@ public interface ProberCardInformationDao {
     public double getPinMinByMaxTime(@Param("proberCardId") String proberCardId);
 
     public double getAfterPinByMaxTime(@Param("proberCardId") String proberCardId);
+
+    public ArrayList<DepthSpecBean> getDepthSpec(@Param("proberCardId") String proberCardId);
 }

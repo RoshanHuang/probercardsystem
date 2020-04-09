@@ -132,4 +132,9 @@ public class InformationController {
     public double getAfterPinByMaxTime(@PathVariable("proberCardId") String proberCardId){
         return  proberCardInformation.getAfterPinByMaxTime(proberCardId);
     }
+
+    @GetMapping("/DepthSpec/{proberCardId}")
+    public ArrayList<DepthSpecBean> getDepthSpec(@PathVariable("proberCardId") String proberCardId) {
+        return proberCardInformation.getDepthSpec(proberCardId);
+    }
 }

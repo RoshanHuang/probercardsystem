@@ -61,4 +61,6 @@ public interface ProberCardInformation {
 
     public double getAfterPinByMaxTime(String proberCardId);
 
+    public ArrayList<DepthSpecBean> getDepthSpec(String proberCardId);
+
 }

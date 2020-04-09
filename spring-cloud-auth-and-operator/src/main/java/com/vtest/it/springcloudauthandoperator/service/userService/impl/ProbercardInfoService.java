@@ -145,4 +145,9 @@ public class ProbercardInfoService {
         ResponseEntity<Double> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/AfterPinByMaxTime/{proberCardId}", Double.class,proberCardId);
         return responseEntity.getBody();
     }
+
+    public String getDepthSpec(String proberCardId) {
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/prober-card-service/information/DepthSpec/{proberCardId}", String.class, proberCardId);
+        return responseEntity.getBody();
+    }
 }

@@ -124,4 +124,8 @@
     <select id="getAfterPinByMaxTime" statementType="CALLABLE" resultType="Double">
         {call VTProberCard.pro_GetMaintCardMinLen(#{proberCardId,mode=IN,jdbcType=VARCHAR})}
     </select>
+    <select id="getDepthSpec" statementType="CALLABLE"
+            resultType="com.vtest.it.springcloudprobercardservice.domain.DepthSpecBean">
+        {call VTProberCard.pro_GetCardDepthSingle(#{proberCardId,mode=IN,jdbcType=VARCHAR})}
+    </select>
 </mapper>

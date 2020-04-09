@@ -171,7 +171,8 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
             @CacheEvict(value = "ProberCardCache",key = "'getAllProberCardStatus'"),
             @CacheEvict(value = "ProberCardCache",key = "'getAllList'"),
             @CacheEvict(value = "ProberCardCache",key = "'getCard&'+#bean.proberCardId"),
-            @CacheEvict(value = "ProberCardCache", key = "'getSpec&'+#bean.proberCardId")
+            @CacheEvict(value = "ProberCardCache", key = "'getSpec&'+#bean.proberCardId"),
+            @CacheEvict(value = "ProberCardCache", key = "'getDepthSpec&'+#bean.proberCardId")
     })
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public void updateProberCard(ProberCardEntityBean bean) {
