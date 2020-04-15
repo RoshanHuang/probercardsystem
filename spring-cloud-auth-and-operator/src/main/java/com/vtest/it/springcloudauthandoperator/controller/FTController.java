@@ -36,19 +36,19 @@ public class FTController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_NORMAL-FT') or hasAuthority('ROLE_TOP-FT')")
-    @GetMapping("/ToolingState")
+    @PostMapping("/ToolingState")
     public String getToolingState(String toolingId, String type) {
         return ftInfoService.getToolingState(toolingId, type);
     }
 
     @PreAuthorize("hasAuthority('ROLE_NORMAL-FT') or hasAuthority('ROLE_TOP-FT')")
-    @GetMapping("/LastEquipment")
+    @PostMapping("/LastEquipment")
     public String getLastEquipment(String toolingId, String type) {
         return ftInfoService.getLastEquipment(toolingId, type);
     }
 
     @PreAuthorize("hasAuthority('ROLE_NORMAL-FT') or hasAuthority('ROLE_TOP-FT')")
-    @GetMapping("/LastBackEquipment")
+    @PostMapping("/LastBackEquipment")
     public String getLastBackEquipment(String toolingId, String type) {
         return ftInfoService.getLastBackEquipment(toolingId, type);
     }

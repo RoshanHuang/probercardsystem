@@ -36,7 +36,7 @@ public class FTInfoService {
         MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
         requestEntity.add("toolingId", toolingId);
         requestEntity.add("type", type);
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/FT-Service/FtInformation/ToolingState", String.class, requestEntity);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/FT-Service/FtOperate/ToolingState", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
@@ -44,7 +44,7 @@ public class FTInfoService {
         MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
         requestEntity.add("toolingId", toolingId);
         requestEntity.add("type", type);
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/FT-Service/FtInformation/LastEquipment", String.class, requestEntity);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/FT-Service/FtOperate/LastEquipment", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
@@ -52,7 +52,7 @@ public class FTInfoService {
         MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
         requestEntity.add("toolingId", toolingId);
         requestEntity.add("type", type);
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://192.168.10.182:20300/FT-Service/FtInformation/LastBackEquipment", String.class, requestEntity);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://192.168.10.182:20300/FT-Service/FtOperate/LastBackEquipment", requestEntity, String.class);
         return responseEntity.getBody();
     }
 
