@@ -3,9 +3,9 @@ package com.vtest.it.springcloudauthandoperator.controller;
 import com.vtest.it.springcloudauthandoperator.service.userService.impl.DataParseService;
 import common.domain.VtestBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @CrossOrigin
@@ -80,5 +80,16 @@ public class DataParseController {
     @GetMapping("/yields")
     public String getYields(VtestBean bean){
         return  dataParseService.getYields(bean);
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN-PARSE')")
+    @PostMapping("/Rawdata")
+    public String modify(@RequestParam("modifyFile") MultipartFile modifyFile, String type) {
+        return dataParseService.modify(modifyFile, type);
+    }
+
+    @PostMapping(value = "/RawdataNormal")
+    public String modifyNormal(@RequestParam("modifyFile") MultipartFile modifyFile, String type) {
+        return dataParseService.RawdataNormal(modifyFile, type);
     }
 }

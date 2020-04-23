@@ -34,7 +34,7 @@ public class RawdataModifyController {
         this.rawdataModifyUpdate = rawdataModifyUpdate;
     }
 
-    @PostMapping("/Rawdata")
+    @PostMapping(value = "/Rawdata", produces = {"application/json;charset=UTF-8"})
     public ArrayList<RawdataModifyBean> modify(@RequestParam("modifyFile") MultipartFile modifyFile, @RequestParam("type") String type) {
         ArrayList<RawdataModifyBean> dealList = new ArrayList<>();
         try {
@@ -57,8 +57,8 @@ public class RawdataModifyController {
         }
     }
 
-    @PostMapping("/RawdataByAdmin")
-    public ArrayList<RawdataModifyBean> modifyByAdmin(@RequestParam("modifyFile") MultipartFile modifyFile, @RequestParam("type") String type) {
+    @PostMapping(value = "/RawdataNormal", produces = {"application/json;charset=UTF-8"})
+    public ArrayList<RawdataModifyBean> modifyNormal(@RequestParam("modifyFile") MultipartFile modifyFile, @RequestParam("type") String type) {
         ArrayList<RawdataModifyBean> dealList = new ArrayList<>();
         try {
             File Directory = new File("/FileUpload");
