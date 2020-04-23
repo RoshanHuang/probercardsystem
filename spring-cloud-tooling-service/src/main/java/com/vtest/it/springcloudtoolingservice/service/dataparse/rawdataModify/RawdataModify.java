@@ -320,7 +320,7 @@ public class RawdataModify extends RawdataModifyParent {
                     printWriter.print(Bin_sum + "\r\n");
                     sBuilder.append("|Bin" + key + ":" + Bin_sum);
                 }
-//                binInforWriteToMes.Write(Lot, Waferid, sBuilder.toString(), CPProcess);
+                binInforWriteToMes.Write(Lot, Waferid, sBuilder.toString(), CPProcess);
                 printWriter.close();
                 rawdataModifyBean.setStatus("Success");
                 rawdataModifyBean.setReason("OK");
