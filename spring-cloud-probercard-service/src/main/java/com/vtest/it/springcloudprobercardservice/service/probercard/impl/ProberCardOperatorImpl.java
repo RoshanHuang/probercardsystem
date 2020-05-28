@@ -247,7 +247,6 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
     }
 
     @Override
-    @CacheEvict(value = "ProberCardCache",key = "'getTd'")
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public boolean cleanPM(String cardid, String ownerid) {
         return proberCardOperator.cleanPM(cardid,ownerid);
@@ -262,7 +261,6 @@ public class ProberCardOperatorImpl implements ProberCardOperator {
          proberCardOperator.addCheckProberCard(bean);
     }
     @Override
-    @CacheEvict(value = "ProberCardCache",key = "'getTd'")
     @Transactional(value = "transactionManager",propagation = Propagation.REQUIRED,isolation = Isolation.SERIALIZABLE,rollbackFor =Exception.class)
     public boolean cleanTD(String cardid,String ownerid){
       return proberCardOperator.cleanTD(cardid,ownerid);
